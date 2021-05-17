@@ -19,6 +19,15 @@
       <description>Desc Text.</description>
     </item>
     
+    <item>
+      <title>Add To Siri Buttonx with SwiftUI</title>
+      <link>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</guid>
+      <description>How to add an Add to Siri Button to your SwiftUI App</description>
+    </item>
+    
     
     
   </channel>
