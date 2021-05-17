@@ -1,6 +1,6 @@
 ---
 title: "Add To Siri Buttonx with SwiftUI"
-date: 2020-05-20T15:32:49+02:0
+date: "2020-05-20"
 # weight: 1
 # aliases: ["/first"]
 tags: ["SwiftUI"]
@@ -22,7 +22,7 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 cover:
     image: "addtosiributton.png" # image path/url
-    alt: "<alt text>" # alt text
+    alt: "SwiftUI Add to siri button" # alt text
     caption: "<text>" # display caption under cover
     relative: false # when using page bundles set this to true
     hidden: true # only hide on current single page
