@@ -2,35 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.julianbeck.com/tags/first/</loc>
-    <lastmod>2021-05-16T15:32:49+02:00</lastmod>
+    <loc>https://blog.julianbeck.com/categories/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/categories/frontend/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/tags/javascript/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/</loc>
-    <lastmod>2021-05-16T15:32:49+02:00</lastmod>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/posts/</loc>
-    <lastmod>2021-05-16T15:32:49+02:00</lastmod>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/tags/stripe/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/posts/stripe-client-side-donation-button-with-react/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/tags/</loc>
-    <lastmod>2021-05-16T15:32:49+02:00</lastmod>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.julianbeck.com/posts/test/</loc>
-    <lastmod>2021-05-16T15:32:49+02:00</lastmod>
+    <loc>https://blog.julianbeck.com/tags/tailwind/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/categories/web-development/</loc>
+    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</loc>
-  </url><url>
-    <loc>https://blog.julianbeck.com/archives/</loc>
-  </url><url>
-    <loc>https://blog.julianbeck.com/categories/</loc>
+    <lastmod>2020-05-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/categories/ios/</loc>
+    <lastmod>2020-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/categories/swift/</loc>
+    <lastmod>2020-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/tags/swiftui/</loc>
+    <lastmod>2020-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/archives/</loc>
   </url><url>
     <loc>https://blog.julianbeck.com/search/</loc>
   </url><url>
     <loc>https://blog.julianbeck.com/series/</loc>
-  </url><url>
-    <loc>https://blog.julianbeck.com/categories/swift/</loc>
-  </url><url>
-    <loc>https://blog.julianbeck.com/tags/swiftui/</loc>
   </url>
 </urlset>

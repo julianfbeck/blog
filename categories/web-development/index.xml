@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Julian&#39;s Blog</title>
-    <link>https://blog.julianbeck.com/</link>
-    <description>Recent content on Julian&#39;s Blog</description>
+    <title>Web Development on Julian&#39;s Blog</title>
+    <link>https://blog.julianbeck.com/categories/web-development/</link>
+    <description>Recent content in Web Development on Julian&#39;s Blog</description>
     <image>
       <url>https://blog.julianbeck.com/papermod-cover.png</url>
       <link>https://blog.julianbeck.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/categories/web-development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Stripe Client Side Donation Button With React</title>
       <link>https://blog.julianbeck.com/posts/stripe-client-side-donation-button-with-react/</link>
@@ -18,17 +18,6 @@
       <guid>https://blog.julianbeck.com/posts/stripe-client-side-donation-button-with-react/</guid>
       <description>Stripe Client Side Donation Button With React</description>
     </item>
-    
-    <item>
-      <title>Add To Siri Buttonx with SwiftUI</title>
-      <link>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</link>
-      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</guid>
-      <description>How to add an Add to Siri Button to your SwiftUI App</description>
-    </item>
-    
-    
     
   </channel>
 </rss>

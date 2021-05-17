@@ -9,20 +9,20 @@
       <link>https://blog.julianbeck.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 16 May 2021 15:32:49 +0200</lastBuildDate><atom:link href="https://blog.julianbeck.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test</title>
-      <link>https://blog.julianbeck.com/posts/test/</link>
-      <pubDate>Sun, 16 May 2021 15:32:49 +0200</pubDate>
+      <title>Stripe Client Side Donation Button With React</title>
+      <link>https://blog.julianbeck.com/posts/stripe-client-side-donation-button-with-react/</link>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.julianbeck.com/posts/test/</guid>
-      <description>Desc Text.</description>
+      <guid>https://blog.julianbeck.com/posts/stripe-client-side-donation-button-with-react/</guid>
+      <description>Stripe Client Side Donation Button With React</description>
     </item>
     
     <item>
       <title>Add To Siri Buttonx with SwiftUI</title>
       <link>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</guid>
       <description>How to add an Add to Siri Button to your SwiftUI App</description>

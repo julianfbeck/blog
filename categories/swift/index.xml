@@ -8,11 +8,12 @@
       <url>https://blog.julianbeck.com/papermod-cover.png</url>
       <link>https://blog.julianbeck.com/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://blog.julianbeck.com/categories/swift/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 20 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/categories/swift/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Add To Siri Buttonx with SwiftUI</title>
       <link>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</guid>
       <description>How to add an Add to Siri Button to your SwiftUI App</description>
