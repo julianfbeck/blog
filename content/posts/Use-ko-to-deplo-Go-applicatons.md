@@ -1,17 +1,17 @@
 ---
-title: "Add To Siri Buttonx with SwiftUI"
-date: "2020-05-20"
+title: "Fast local Development using ko, Golang, and minikube"
+date: "2021-01-01"
 # weight: 1
 # aliases: ["/first"]
-tags: ["SwiftUI"]
-categories: ["iOS", "Swift"]
+tags: ["go" ,"kubernetes", "minikube","ko"]
+categories: ["go", "kubernetes"]
 author: "Julian Beck"
 showToc: false
 TocOpen: false
 draft: false
 hidemeta: false
 comments: false
-description: "How to add an Add to Siri Button to your SwiftUI App"
+description: ""
 disableHLJS: true # to disable highlightjs
 disableShare: false
 disableHLJS: false
@@ -32,10 +32,21 @@ editPost:
     appendFilePath: true # to append file path to Edit link
 ---
 
-For an app I was building I needed to add an **Add to Siri Button**, to add new Interaction to Shortcuts. While this straightforward in UIKit, it was more challenging in a project that uses SwiftUI.
+First we need to start a local minikube cluster. Use following command to deploy a local cluster and point your `kubectl` to it:
+```sh
+minikube start
+```
+
+```sh
+export KO_DOCKER_REPO=ko.local
 ```
 
 ```
+eval $(minikube -p minikube docker-env)
+```
+
+For an app I was building I needed to add an **Add to Siri Button**, to add new Interaction to Shortcuts. While this straightforward in UIKit, it was more challenging in a project that uses SwiftUI.
+
 SwiftUI makes it easy to build and prototype good looking UIs for all kinds of applications.
 While the code of SwiftUI is simple and clean, it is still young and a lot of API functionality is missing.
 That makes it a bit challenging to build applications that access System APIs.
