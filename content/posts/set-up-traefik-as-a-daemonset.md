@@ -8,7 +8,7 @@ categories: ["raspberrypi", "kubernetes", traefik]
 author: "Julian Beck"
 showToc: false
 TocOpen: false
-draft: false
+draft: true
 hidemeta: false
 comments: false
 description: ""
