@@ -1,6 +1,6 @@
 ---
 title: "Stripe Client Side Donation Button With React"
-date: "2021-03-16"
+date: "2020-03-16"
 # weight: 1
 # aliases: ["/first"]
 tags: ["Tailwind", "Stripe", "JavaScript"]
@@ -20,12 +20,7 @@ searchHidden: true
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
-cover:
-    image: "https://cdn-images-1.medium.com/max/2000/1*9zUFQ2ZxLyfiJ84kW2n-9Q.png" # image path/url
-    alt: "Donation Button in Tailwind" # alt text
-    caption: "<text>" # display caption under cover
-    relative: false # when using page bundles set this to true
-    hidden: true # only hide on current single page
+
 editPost:
     URL: "https://github.com/jufabeck2202/blog/tree/master/content"
     Text: "Suggest Changes" # edit text

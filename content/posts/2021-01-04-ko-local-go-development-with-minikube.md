@@ -1,5 +1,5 @@
 ---
-title: "Fast local Development using Ko, Golang, and minikube"
+title: "Fast local Development using Ko, Golang, and Minikube"
 date: "2021-01-01"
 # weight: 1
 # aliases: ["/first"]
