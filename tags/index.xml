@@ -9,34 +9,7 @@
       <link>https://blog.julianbeck.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>JavaScript</title>
-      <link>https://blog.julianbeck.com/tags/javascript/</link>
-      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Stripe</title>
-      <link>https://blog.julianbeck.com/tags/stripe/</link>
-      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/tags/stripe/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tailwind</title>
-      <link>https://blog.julianbeck.com/tags/tailwind/</link>
-      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/tags/tailwind/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go</title>
       <link>https://blog.julianbeck.com/tags/go/</link>
@@ -79,6 +52,33 @@
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.julianbeck.com/tags/swiftui/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://blog.julianbeck.com/tags/javascript/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stripe</title>
+      <link>https://blog.julianbeck.com/tags/stripe/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/tags/stripe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tailwind</title>
+      <link>https://blog.julianbeck.com/tags/tailwind/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/tags/tailwind/</guid>
       <description></description>
     </item>
     

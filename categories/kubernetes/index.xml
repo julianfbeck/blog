@@ -11,7 +11,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Fast local Development using Ko, Golang, and minikube</title>
+      <title>Fast local Development using Ko, Golang, and Minikube</title>
       <link>https://blog.julianbeck.com/posts/2021-01-04-ko-local-go-development-with-minikube/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       

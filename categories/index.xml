@@ -9,25 +9,7 @@
       <link>https://blog.julianbeck.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Frontend</title>
-      <link>https://blog.julianbeck.com/categories/frontend/</link>
-      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/categories/frontend/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web Development</title>
-      <link>https://blog.julianbeck.com/categories/web-development/</link>
-      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/categories/web-development/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go</title>
       <link>https://blog.julianbeck.com/categories/go/</link>
@@ -61,6 +43,24 @@
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.julianbeck.com/categories/swift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Frontend</title>
+      <link>https://blog.julianbeck.com/categories/frontend/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/categories/frontend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Development</title>
+      <link>https://blog.julianbeck.com/categories/web-development/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/categories/web-development/</guid>
       <description></description>
     </item>
     

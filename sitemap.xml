@@ -3,34 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.julianbeck.com/categories/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/categories/frontend/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/tags/javascript/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/posts/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/tags/stripe/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/posts/stripe-client-side-donation-button-with-react/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/tags/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/tags/tailwind/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/categories/web-development/</loc>
-    <lastmod>2021-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/posts/2021-01-04-ko-local-go-development-with-minikube/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
@@ -39,6 +12,9 @@
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/categories/go/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/tags/ko/</loc>
@@ -53,6 +29,12 @@
     <loc>https://blog.julianbeck.com/tags/minikube/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://blog.julianbeck.com/posts/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/tags/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</loc>
     <lastmod>2020-05-20T00:00:00+00:00</lastmod>
   </url><url>
@@ -64,6 +46,24 @@
   </url><url>
     <loc>https://blog.julianbeck.com/tags/swiftui/</loc>
     <lastmod>2020-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/categories/frontend/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/tags/javascript/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/tags/stripe/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/posts/stripe-client-side-donation-button-with-react/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/tags/tailwind/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/categories/web-development/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/archives/</loc>
   </url><url>
