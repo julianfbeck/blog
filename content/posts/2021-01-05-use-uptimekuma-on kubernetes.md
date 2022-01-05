@@ -31,7 +31,7 @@ This post describes how to deploy the **Uptime-Kuma** on Kubernetes.
 
 Use the following `StatefulSet` to deploy **Uptime-Kuma**:  
 ```yaml
-## StatefulSet
+# StatefulSet
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -79,6 +79,7 @@ Make sure to enter a storage class you want to use.
 
 Next define the service:
 ```yaml
+# Service
 apiVersion: v1
 kind: Service
 metadata:
@@ -94,7 +95,8 @@ spec:
 For ingress, I use the Traefik Reverse Proxy using the following Definition. 
 Make sure to set up certmanager:
 ```yaml
- apiVersion: networking.k8s.io/v1
+# Ingress
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -126,6 +128,7 @@ status:
 ```
 Alternatively, you can use nginx:
 ```yaml
+# Ingress
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
