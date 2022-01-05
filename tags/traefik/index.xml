@@ -11,7 +11,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Deploy UptimeKuma on Kubernetes</title>
+      <title>Deploy Uptime Kuma on Kubernetes</title>
       <link>https://blog.julianbeck.com/posts/2021-01-05-use-uptimekuma-on-kubernetes/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       

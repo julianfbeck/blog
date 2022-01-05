@@ -151,10 +151,8 @@ if (!doNotTrack) {
 </header>
 
 <article class="post-entry tag-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.julianbeck.com/addtosiributton.png" alt="SwiftUI Add to siri button">
-</figure>
   <header class="entry-header">
-    <h2>Deploy UptimeKuma on Kubernetes</h2>
+    <h2>Deploy Uptime Kuma on Kubernetes</h2>
   </header>
   <section class="entry-content">
     <p>Uptime-Kuma is a self-hosted monitoring tool that gains more and more popularity on GitHub.
@@ -163,7 +161,7 @@ Use the following StatefulSet to deploy Uptime-Kuma:
 ## StatefulSet apiVersion: apps/v1 kind: StatefulSet metadata: name: uptime-kuma namespace: monitoring spec: replicas: 1 serviceName: uptime-kuma-service selector: matchLabels: app: uptime-kuma template: metadata: labels: app: uptime-kuma spec: containers: - name: uptime-kuma image: louislam/uptime-kuma env: - name: UPTIME_KUMA_PORT value: &#34;3001&#34; - name: PORT value: &#34;3001&#34; ports: - name: uptime-kuma containerPort: 3001 protocol: TCP volumeMounts: - name: uptime-kuma-data mountPath: /app/data volumeClaimTemplates: - metadata: name: uptime-kuma-data spec: accessModes: [&#34;ReadWriteOnce&#34;] volumeMode: Filesystem resources: requests: storage: 2Gi storageClassName: &lt;your-storage-class&gt; Make sure to enter a storage class you want to use....</p>
   </section>
   <footer class="entry-footer">January 6, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Julian Beck</footer>
-  <a class="entry-link" aria-label="post link to Deploy UptimeKuma on Kubernetes" href="https://blog.julianbeck.com/posts/2021-01-05-use-uptimekuma-on-kubernetes/"></a>
+  <a class="entry-link" aria-label="post link to Deploy Uptime Kuma on Kubernetes" href="https://blog.julianbeck.com/posts/2021-01-05-use-uptimekuma-on-kubernetes/"></a>
 </article>
     </main>
     <footer class="footer">
