@@ -9,7 +9,19 @@
       <link>https://blog.julianbeck.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 05 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploy UptimeKuma on Kubernetes</title>
+      <link>https://blog.julianbeck.com/posts/2021-01-05-use-uptimekuma-on-kubernetes/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/posts/2021-01-05-use-uptimekuma-on-kubernetes/</guid>
+      <description>Uptime-Kuma is a self-hosted monitoring tool that gains more and more popularity on GitHub.
+This post describes how to deploy the Uptime-Kuma on Kubernetes.
+Use the following StatefulSet to deploy Uptime-Kuma:
+## StatefulSet apiVersion: apps/v1 kind: StatefulSet metadata: name: uptime-kuma namespace: monitoring spec: replicas: 1 serviceName: uptime-kuma-service selector: matchLabels: app: uptime-kuma template: metadata: labels: app: uptime-kuma spec: containers: - name: uptime-kuma image: louislam/uptime-kuma env: - name: UPTIME_KUMA_PORT value: &amp;#34;3001&amp;#34; - name: PORT value: &amp;#34;3001&amp;#34; ports: - name: uptime-kuma containerPort: 3001 protocol: TCP volumeMounts: - name: uptime-kuma-data mountPath: /app/data volumeClaimTemplates: - metadata: name: uptime-kuma-data spec: accessModes: [&amp;#34;ReadWriteOnce&amp;#34;] volumeMode: Filesystem resources: requests: storage: 2Gi storageClassName: &amp;lt;your-storage-class&amp;gt; Make sure to enter a storage class you want to use.</description>
+    </item>
+    
     <item>
       <title>Set up Basic-Auth using Traefik 2 on Kubernetes</title>
       <link>https://blog.julianbeck.com/posts/2021-01-05-set-up-basic-auth/</link>
