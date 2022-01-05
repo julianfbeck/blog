@@ -9,11 +9,11 @@
       <link>https://blog.julianbeck.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Set up Basic-Auth using Traefik 2 on Kubernetes</title>
       <link>https://blog.julianbeck.com/posts/2021-01-05-set-up-basic-auth/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://blog.julianbeck.com/posts/2021-01-05-set-up-basic-auth/</guid>
       <description>Traefik is a modern reverse proxy and load balancer that makes deploying microservices easy. Traefik is natively compliant with Kubernetes, Docker and a lot of other cluster technologies.
