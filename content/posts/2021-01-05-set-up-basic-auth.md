@@ -1,6 +1,6 @@
 ---
 title: "Set up Basic-Auth using Traefik 2 on Kubernetes"
-date: "2021-01-01"
+date: "2021-01-05"
 # weight: 1
 # aliases: ["/first"]
 tags: ["k3s" ,"kubernetes", "traefik","raspberrypi"]
@@ -26,6 +26,7 @@ editPost:
     appendFilePath: true # to append file path to Edit link
 ---
 [Traefik](https://doc.traefik.io/traefik/) is a modern reverse proxy and load balancer that makes deploying microservices easy. Traefik is natively compliant with Kubernetes, Docker and a lot of other cluster technologies.   
+
 Traefik allows the use of middlewares to tweak requests before they are sent to a service. 
 There are several available middlewares in Traefik, some can modify the request, the headers, some are in charge of redirections and some add authentication.
 
@@ -34,7 +35,7 @@ The BasicAuth-Middleware restricts access to services by prompting the user for 
 
 
 There are multiple ways to enable and configure different Middlewares for Traefik. For the use with Kubernetes I will explain the 
-**File-Provider** and the **Kubernetes-Provicer**:
+**File-Provider** and the **Kubernetes-Provider**:
 ## Configuration using File-Provider:
 The File-Provider uses a YAML-Configuration-File that defines all the activated middlewares. 
 The Following YAML shows my current Middleware File:
