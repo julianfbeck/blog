@@ -36,7 +36,7 @@ For an app I was building I needed to add an **Add to Siri Button**, to add new 
 ```
 
 ```
-SwiftUI makes it easy to build and prototype good looking UIs for all kinds of applications.
+SwiftUI makes it easy to build and prototype good-looking UIs for all kinds of applications.
 While the code of SwiftUI is simple and clean, it is still young and a lot of API functionality is missing.
 That makes it a bit challenging to build applications that access System APIs.
 
