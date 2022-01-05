@@ -17,6 +17,9 @@
     <loc>https://blog.julianbeck.com/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://blog.julianbeck.com/tags/k3s/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://blog.julianbeck.com/tags/ko/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -32,7 +35,19 @@
     <loc>https://blog.julianbeck.com/posts/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://blog.julianbeck.com/tags/raspberrypi/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/categories/raspberrypi/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/posts/2021-01-05-set-up-basic-auth/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://blog.julianbeck.com/tags/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/tags/traefik/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</loc>

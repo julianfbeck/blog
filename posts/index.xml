@@ -20,6 +20,17 @@
     </item>
     
     <item>
+      <title>Set up Basic-Auth using Traefik 2 on Kubernetes</title>
+      <link>https://blog.julianbeck.com/posts/2021-01-05-set-up-basic-auth/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/posts/2021-01-05-set-up-basic-auth/</guid>
+      <description>Traefik is a modern reverse proxy and load balancer that makes deploying microservices easy. Traefik is natively compliant with Kubernetes, Docker and a lot of other cluster technologies.
+Traefik allows the use of middlewares to tweak requests before they are sent to a service. There are several available middlewares in Traefik, some can modify the request, the headers, some are in charge of redirections and some add authentication.
+This Post explains how to configure the BasicAuth-Middleware for Traefik 2 in Kubernetes.</description>
+    </item>
+    
+    <item>
       <title>Add to Siri Button with SwiftUI</title>
       <link>https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/</link>
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
