@@ -1,5 +1,5 @@
 ---
-title: "Set up Basic-Auth using Traefik on kubernetes"
+title: "Set up Basic-Auth using Traefik 2 on kubernetes"
 date: "2021-01-01"
 # weight: 1
 # aliases: ["/first"]

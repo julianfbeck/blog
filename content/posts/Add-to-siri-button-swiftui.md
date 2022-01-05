@@ -1,5 +1,5 @@
 ---
-title: "Add To Siri Buttonx with SwiftUI"
+title: "Add to Siri Button with SwiftUI"
 date: "2020-05-20"
 # weight: 1
 # aliases: ["/first"]
