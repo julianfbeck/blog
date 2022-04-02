@@ -78,12 +78,24 @@ params:
             Hi there, I’m Julian Beck 👋
 
 
-            I’m a computer science student at the University of applied sciences in Karlsruhe. 
-            
-            
-            Currently, I have a huge interest in learning Web techniques and Full Stack development as well as native App development.
+            Computer Science Student focusing on ML, iOS and Fullstack Development. Also interested in Cloud and Dev-Ops!
 
-   
+    socialIcons:
+        - name: github
+          url: "https://github.com/jufabeck2202"
+        - name: twitter
+          url: "https://twitter.com/kickbeak"
+        - name: linkedin
+          url: "https://www.linkedin.com/in/julian-beck/"
+        - name: RsS
+          url: "index.xml"
+
+    editPost:
+        URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
+        Text: "Suggest Changes" # edit text
+        appendFilePath: true # to append file path to Edit link
+
+    # label:
     #     text: "Home"
     #     icon: icon.png
     #     iconHeight: 35
