@@ -11,7 +11,7 @@
 <meta name="author" content="Julian Beck">
 <link rel="canonical" href="https://blog.julianbeck.com/posts/stripe-client-side-donation-button-with-react/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.2d6dbfc6e0f8a1db1c9d082a76dc11d094328cf63f247bbc2421dfaa7f2bb170.css" integrity="sha256-LW2/xuD4odscnQgqdtwR0JQyjPY/JHu8JCHfqn8rsXA=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://blog.julianbeck.com/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.julianbeck.com/favicon-16x16.png">
@@ -20,7 +20,7 @@
 <link rel="mask-icon" href="https://blog.julianbeck.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.96.0" />
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -77,7 +77,7 @@ if (!doNotTrack) {
   "keywords": [
     "Tailwind", "Stripe", "JavaScript"
   ],
-  "articleBody": "I wanted to add a Donation Button to my React Website https://localpdf.tech. Stripes Client-Only-Checkout is perfect for that, beacause you don’t need a server.\nDonation Button using React Stripe and Tailwind\nEnable Stripe Client only Integration First, you need to add a Test-Product to Stripe. Make sure you activate Viewing Test Data:\nAfter that create a simple Test-Product to test our Donation button later on. After you have created the Product we can enable the Client-Only integration. Goto Settings  Checkout settings and enable the client-only integration.\nNext enter the Domain for your Website so it can be used in the live mode. In my case it is localpdf.tech.\nNow you are set for the Stripe side and we can start building the React Donation Button.\nReact Donation Button To use Stripe, install the Stripe NPM package:\nnpm install @stripe/stripe-js After that, get your Publishable Key and init the Stripe library using it:\nimport { loadStripe } from \"@stripe/stripe-js\"; const stripePromise = loadStripe( \"pk_test_51IUqMCJ2iOysJZvP3vrQpEoV2l1SpF9PzkycqVdKjmC3RYuDC3AqTvRfBDcsDwDmtxJlkUyip4GQOb8Akt0lF3O100RSHVPfch\" ); To start a Checkout using the Client-Only Integration you need to call redirectToCheckout:\nconst stripe = await stripePromise; stripe .redirectToCheckout({ lineItems: [{ price: itemID, quantity: 1 }], mode: \"payment\", successUrl: window.location.protocol + \"//localpdf.tech/merge\", cancelUrl: window.location.protocol + \"//localpdf.tech/merge\", submitType: \"donate\", }) .then(function (result) { if (result.error) { console.log(result); } }); Set the price to the ProductID of the created Test-Product on the Stripe-Dashboard. Next set the successUrl and cancelUrl to your desiered location. You can set the submitType too auto if you don’t want the payment to be a Donation.\nHere is the complete code for a React Donation Button:\nimport React from \"react\"; import \"./styles.css\"; import \"./styles/tailwind-pre-build.css\"; import { loadStripe } from \"@stripe/stripe-js\"; const stripePromise = loadStripe( \"pk_test_51IUqMCJ2iOysJZvP3vrQpEoV2l1SpF9PzkycqVdKjmC3RYuDC3AqTvRfBDcsDwDmtxJlkUyip4GQOb8Akt0lF3O100RSHVPfch\" ); const DonationButton = ({ itemID, ammount }) = { const handleClick = async (event) = { const stripe = await stripePromise; stripe .redirectToCheckout({ lineItems: [{ price: itemID, quantity: 1 }], mode: \"payment\", successUrl: window.location.protocol + \"//localpdf.tech/merge\", cancelUrl: window.location.protocol + \"//localpdf.tech/merge\", submitType: \"donate\", }) .then(function (result) { if (result.error) { console.log(result); } }); }; return ( button className=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg\" onClick={handleClick}  Donate {ammount}$ /button ); }; export default function App() { return (  div className=\"justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none\" DonationButton ammount={\"5.00\"} itemID=\"price_1IUx1FJ2iOysJZvP1LD3EzTR\" /DonationButton /div / ); } ",
+  "articleBody": "I wanted to add a Donation Button to my React Website https://localpdf.tech. Stripes Client-Only-Checkout is perfect for that, beacause you don’t need a server.\nDonation Button using React Stripe and Tailwind\nEnable Stripe Client only Integration First, you need to add a Test-Product to Stripe. Make sure you activate Viewing Test Data:\nAfter that create a simple Test-Product to test our Donation button later on. After you have created the Product we can enable the Client-Only integration. Goto Settings  Checkout settings and enable the client-only integration.\nNext enter the Domain for your Website so it can be used in the live mode. In my case it is localpdf.tech.\nNow you are set for the Stripe side and we can start building the React Donation Button.\nReact Donation Button To use Stripe, install the Stripe NPM package:\nnpm install @stripe/stripe-js After that, get your Publishable Key and init the Stripe library using it:\nimport { loadStripe } from \"@stripe/stripe-js\"; const stripePromise = loadStripe(  \"pk_test_51IUqMCJ2iOysJZvP3vrQpEoV2l1SpF9PzkycqVdKjmC3RYuDC3AqTvRfBDcsDwDmtxJlkUyip4GQOb8Akt0lF3O100RSHVPfch\"  ); To start a Checkout using the Client-Only Integration you need to call redirectToCheckout:\nconst stripe = await stripePromise; stripe  .redirectToCheckout({  lineItems: [{ price: itemID, quantity: 1 }],  mode: \"payment\",  successUrl: window.location.protocol + \"//localpdf.tech/merge\",  cancelUrl: window.location.protocol + \"//localpdf.tech/merge\",  submitType: \"donate\",  })  .then(function (result) {  if (result.error) {  console.log(result);  }  }); Set the price to the ProductID of the created Test-Product on the Stripe-Dashboard. Next set the successUrl and cancelUrl to your desiered location. You can set the submitType too auto if you don’t want the payment to be a Donation.\nHere is the complete code for a React Donation Button:\nimport React from \"react\"; import \"./styles.css\"; import \"./styles/tailwind-pre-build.css\"; import { loadStripe } from \"@stripe/stripe-js\"; const stripePromise = loadStripe(  \"pk_test_51IUqMCJ2iOysJZvP3vrQpEoV2l1SpF9PzkycqVdKjmC3RYuDC3AqTvRfBDcsDwDmtxJlkUyip4GQOb8Akt0lF3O100RSHVPfch\" ); const DonationButton = ({ itemID, ammount }) = {  const handleClick = async (event) = {  const stripe = await stripePromise;  stripe  .redirectToCheckout({  lineItems: [{ price: itemID, quantity: 1 }],  mode: \"payment\",  successUrl: window.location.protocol + \"//localpdf.tech/merge\",  cancelUrl: window.location.protocol + \"//localpdf.tech/merge\",  submitType: \"donate\",  })  .then(function (result) {  if (result.error) {  console.log(result);  }  });  };  return (  button  className=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg\"  onClick={handleClick}    Donate {ammount}$  /button  ); }; export default function App() {  return (    div className=\"justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none\"  DonationButton  ammount={\"5.00\"}  itemID=\"price_1IUx1FJ2iOysJZvP1LD3EzTR\"  /DonationButton  /div  /  ); } ",
   "wordCount" : "381",
   "inLanguage": "en",
   "datePublished": "2020-03-16T00:00:00Z",
@@ -249,73 +249,73 @@ if (!doNotTrack) {
 <p>To use Stripe, install the Stripe NPM package:</p>
 <pre tabindex="0"><code>npm install @stripe/stripe-js
 </code></pre><p>After that, get your <strong>Publishable Key</strong> and init the Stripe library using it:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javaScript" data-lang="javaScript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">loadStripe</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@stripe/stripe-js&#34;</span>;
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stripePromise</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">loadStripe</span>(
-      <span style="color:#e6db74">&#34;pk_test_51IUqMCJ2iOysJZvP3vrQpEoV2l1SpF9PzkycqVdKjmC3RYuDC3AqTvRfBDcsDwDmtxJlkUyip4GQOb8Akt0lF3O100RSHVPfch&#34;</span>
-    );
-</code></pre></div><p>To start a Checkout using the Client-Only Integration you need to call redirectToCheckout:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javaScript" data-lang="javaScript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stripe</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">stripePromise</span>;
-<span style="color:#a6e22e">stripe</span>
-  .<span style="color:#a6e22e">redirectToCheckout</span>({
-    <span style="color:#a6e22e">lineItems</span><span style="color:#f92672">:</span> [{ <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">itemID</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> }],
-    <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;payment&#34;</span>,
-    <span style="color:#a6e22e">successUrl</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">protocol</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;//localpdf.tech/merge&#34;</span>,
-    <span style="color:#a6e22e">cancelUrl</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">protocol</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;//localpdf.tech/merge&#34;</span>,
-    <span style="color:#a6e22e">submitType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;donate&#34;</span>,
-  })
-  .<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">result</span>) {
-    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">error</span>) {
-      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>);
-    }
-  });
-</code></pre></div><p>Set the price to the ProductID of the created Test-Product on the Stripe-Dashboard. Next set the successUrl and cancelUrl to your desiered location. You can set the submitType too auto if you don’t want the payment to be a Donation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javaScript" data-lang="javaScript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">loadStripe</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@stripe/stripe-js&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stripePromise</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">loadStripe</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;pk_test_51IUqMCJ2iOysJZvP3vrQpEoV2l1SpF9PzkycqVdKjmC3RYuDC3AqTvRfBDcsDwDmtxJlkUyip4GQOb8Akt0lF3O100RSHVPfch&#34;</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span></code></pre></div><p>To start a Checkout using the Client-Only Integration you need to call redirectToCheckout:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javaScript" data-lang="javaScript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stripe</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">stripePromise</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">stripe</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">redirectToCheckout</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lineItems</span><span style="color:#f92672">:</span> [{ <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">itemID</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> }],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;payment&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">successUrl</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">protocol</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;//localpdf.tech/merge&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cancelUrl</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">protocol</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;//localpdf.tech/merge&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">submitType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;donate&#34;</span>,
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">result</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  });
+</span></span></code></pre></div><p>Set the price to the ProductID of the created Test-Product on the Stripe-Dashboard. Next set the successUrl and cancelUrl to your desiered location. You can set the submitType too auto if you don’t want the payment to be a Donation.</p>
 <p>Here is the complete code for a React Donation Button:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javaScript" data-lang="javaScript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;./styles.css&#34;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;./styles/tailwind-pre-build.css&#34;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">loadStripe</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@stripe/stripe-js&#34;</span>;
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stripePromise</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">loadStripe</span>(
-  <span style="color:#e6db74">&#34;pk_test_51IUqMCJ2iOysJZvP3vrQpEoV2l1SpF9PzkycqVdKjmC3RYuDC3AqTvRfBDcsDwDmtxJlkUyip4GQOb8Akt0lF3O100RSHVPfch&#34;</span>
-);
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">DonationButton</span> <span style="color:#f92672">=</span> ({ <span style="color:#a6e22e">itemID</span>, <span style="color:#a6e22e">ammount</span> }) =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handleClick</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>) =&gt; {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stripe</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">stripePromise</span>;
-    <span style="color:#a6e22e">stripe</span>
-      .<span style="color:#a6e22e">redirectToCheckout</span>({
-        <span style="color:#a6e22e">lineItems</span><span style="color:#f92672">:</span> [{ <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">itemID</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> }],
-        <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;payment&#34;</span>,
-        <span style="color:#a6e22e">successUrl</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">protocol</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;//localpdf.tech/merge&#34;</span>,
-        <span style="color:#a6e22e">cancelUrl</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">protocol</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;//localpdf.tech/merge&#34;</span>,
-        <span style="color:#a6e22e">submitType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;donate&#34;</span>,
-      })
-      .<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">result</span>) {
-        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">error</span>) {
-          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>);
-        }
-      });
-  };
-  <span style="color:#66d9ef">return</span> (
-    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span>
-      <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg&#34;</span>
-      <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleClick</span>}
-    <span style="color:#f92672">&gt;</span>
-      <span style="color:#a6e22e">Donate</span> {<span style="color:#a6e22e">ammount</span>}<span style="color:#a6e22e">$</span>
-    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/button&gt;</span>
-  );
-};
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>() {
-  <span style="color:#66d9ef">return</span> (
-    <span style="color:#f92672">&lt;&gt;</span>
-      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none&#34;</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">DonationButton</span>
-          <span style="color:#a6e22e">ammount</span><span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;5.00&#34;</span>}
-          <span style="color:#a6e22e">itemID</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;price_1IUx1FJ2iOysJZvP1LD3EzTR&#34;</span>
-        <span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/DonationButton&gt;</span>
-      <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
-    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/&gt;</span>
-  );
-}
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javaScript" data-lang="javaScript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;./styles.css&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;./styles/tailwind-pre-build.css&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">loadStripe</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@stripe/stripe-js&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stripePromise</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">loadStripe</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;pk_test_51IUqMCJ2iOysJZvP3vrQpEoV2l1SpF9PzkycqVdKjmC3RYuDC3AqTvRfBDcsDwDmtxJlkUyip4GQOb8Akt0lF3O100RSHVPfch&#34;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">DonationButton</span> <span style="color:#f92672">=</span> ({ <span style="color:#a6e22e">itemID</span>, <span style="color:#a6e22e">ammount</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handleClick</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stripe</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">stripePromise</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stripe</span>
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">redirectToCheckout</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">lineItems</span><span style="color:#f92672">:</span> [{ <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">itemID</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> }],
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;payment&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">successUrl</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">protocol</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;//localpdf.tech/merge&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">cancelUrl</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">protocol</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;//localpdf.tech/merge&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">submitType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;donate&#34;</span>,
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">result</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleClick</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Donate</span> {<span style="color:#a6e22e">ammount</span>}<span style="color:#a6e22e">$</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/button&gt;</span>
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">DonationButton</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">ammount</span><span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;5.00&#34;</span>}
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">itemID</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;price_1IUx1FJ2iOysJZvP1LD3EzTR&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/DonationButton&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/&gt;</span>
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 </div>
   <footer class="post-footer">
     <ul class="post-tags">

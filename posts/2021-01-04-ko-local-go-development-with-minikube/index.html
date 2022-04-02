@@ -11,7 +11,7 @@
 <meta name="author" content="Julian Beck">
 <link rel="canonical" href="https://blog.julianbeck.com/posts/2021-01-04-ko-local-go-development-with-minikube/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.2d6dbfc6e0f8a1db1c9d082a76dc11d094328cf63f247bbc2421dfaa7f2bb170.css" integrity="sha256-LW2/xuD4odscnQgqdtwR0JQyjPY/JHu8JCHfqn8rsXA=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://blog.julianbeck.com/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.julianbeck.com/favicon-16x16.png">
@@ -20,7 +20,7 @@
 <link rel="mask-icon" href="https://blog.julianbeck.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.96.0" />
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -77,7 +77,7 @@ if (!doNotTrack) {
   "keywords": [
     "Go", "kubernetes", "minikube", "ko"
   ],
-  "articleBody": "ko is a simple, fast container image builder for Go applications. In combination with minikube, it enables an easy local development cycle.\nIn this post, I will explain how to set up ko to directly build and deploy Golang applications to minikube.\nFirst, we need to start a local minikube cluster. Use the following command to deploy a local cluster and set it as the current kubectl context.\nminikube start Ko can build and push containers to all kinds of registries. Ko depends on an environment variable, KO_DOCKER_REPO, to identify where it should push images that it builds. For local development, we don’t want to push the images to a remote registry, we will publish the images to the local Docker daemon by exporting the following environment variable:\nexport KO_DOCKER_REPO=ko.local Next, we need to point the shell to minikube’s docker-daemon by running the following command\neval $(minikube -p minikube docker-env) Now we are ready to deploy Go applications directly to minikube. We will deploy a basic application that utilizes the Go prometheus-client using ko:\nimport ( \"fmt\" \"net/http\" \"github.com/prometheus/client_golang/prometheus/promhttp\" ) func main() { http.Handle(\"/metrics\", promhttp.Handler()) http.ListenAndServe(\":8080\", nil) fmt.Println(\"Starting the server on port 8080\") } The Go application is named testGoExport. Next, we will define the Kubernetes Deployment. However, instead of using a path to a remote image, we will reference the Go binary by its importpath, prefixed with ko:// For this to work, make sure that your GOPATH is set correctly.\n# deployment.yaml apiVersion: apps/v1 kind: Deployment metadata: creationTimestamp: null labels: app: prom-test name: prom-test spec: replicas: 1 selector: matchLabels: app: prom-test strategy: {} template: metadata: creationTimestamp: null labels: app: prom-test spec: containers: - image: ko://github.com/jufabeck2202/testGoExporter name: testgoexporter ports: - containerPort: 8080 imagePullPolicy: Never livenessProbe: httpGet: path: /metrics port: 8080 resources: {} To deploy the Deployment we will now run ko apply -f deployment.yaml instead of kubectl apply -f deployment.yaml. This will:\n Scan the YAML file for the ko:// prefix Build the Go application Publish the application to the local docker daemon Replace the image name with the fully-specified image reference of the build image Deploy the Deployment After executing:  ko apply -f deployment.yaml Output: 2022/01/04 17:22:21 Using base gcr.io/distroless/static:nonroot for github.com/jufabeck2202/testGoExporter 2022/01/04 17:22:22 Building github.com/jufabeck2202/testGoExporter for linux/amd64 2022/01/04 17:22:24 Loading ko.local/testgoexporter-18931265053c2910578ee5844178b709:beb82aa376e6822d87b72e69a48356427674630e844d720357afb532b73b6896 2022/01/04 17:22:24 Loaded ko.local/testgoexporter-18931265053c2910578ee5844178b709:beb82aa376e6822d87b72e69a48356427674630e844d720357afb532b73b6896 2022/01/04 17:22:24 Adding tag latest 2022/01/04 17:22:24 Added tag latest deployment.apps/prom-test created If we now check the current deployments we see our deployed applications:\nkubectl get deployments NAME READY UP-TO-DATE AVAILABLE AGE prom-test 1/1 1 1 68s The Deployment uses the image called ko.local/testgoexporter-18931265053c2910578ee5844178b709:beb82aa376e6822d87b72e69a4\nTo learn more, make sure to check out ko documentation at the GitHub repository!\n",
+  "articleBody": "ko is a simple, fast container image builder for Go applications. In combination with minikube, it enables an easy local development cycle.\nIn this post, I will explain how to set up ko to directly build and deploy Golang applications to minikube.\nFirst, we need to start a local minikube cluster. Use the following command to deploy a local cluster and set it as the current kubectl context.\nminikube start Ko can build and push containers to all kinds of registries. Ko depends on an environment variable, KO_DOCKER_REPO, to identify where it should push images that it builds. For local development, we don’t want to push the images to a remote registry, we will publish the images to the local Docker daemon by exporting the following environment variable:\nexport KO_DOCKER_REPO=ko.local Next, we need to point the shell to minikube’s docker-daemon by running the following command\neval $(minikube -p minikube docker-env) Now we are ready to deploy Go applications directly to minikube. We will deploy a basic application that utilizes the Go prometheus-client using ko:\nimport (  \"fmt\"  \"net/http\"   \"github.com/prometheus/client_golang/prometheus/promhttp\" )  func main() {  http.Handle(\"/metrics\", promhttp.Handler())  http.ListenAndServe(\":8080\", nil)  fmt.Println(\"Starting the server on port 8080\") } The Go application is named testGoExport. Next, we will define the Kubernetes Deployment. However, instead of using a path to a remote image, we will reference the Go binary by its importpath, prefixed with ko:// For this to work, make sure that your GOPATH is set correctly.\n# deployment.yaml apiVersion: apps/v1 kind: Deployment metadata:  creationTimestamp: null  labels:  app: prom-test  name: prom-test  spec:  replicas: 1  selector:  matchLabels:  app: prom-test  strategy: {}  template:  metadata:  creationTimestamp: null  labels:  app: prom-test  spec:  containers:  - image: ko://github.com/jufabeck2202/testGoExporter  name: testgoexporter  ports:  - containerPort: 8080  imagePullPolicy: Never  livenessProbe:  httpGet:  path: /metrics  port: 8080  resources: {} To deploy the Deployment we will now run ko apply -f deployment.yaml instead of kubectl apply -f deployment.yaml. This will:\n Scan the YAML file for the ko:// prefix Build the Go application Publish the application to the local docker daemon Replace the image name with the fully-specified image reference of the build image Deploy the Deployment After executing:  ko apply -f deployment.yaml Output: 2022/01/04 17:22:21 Using base gcr.io/distroless/static:nonroot for github.com/jufabeck2202/testGoExporter 2022/01/04 17:22:22 Building github.com/jufabeck2202/testGoExporter for linux/amd64 2022/01/04 17:22:24 Loading ko.local/testgoexporter-18931265053c2910578ee5844178b709:beb82aa376e6822d87b72e69a48356427674630e844d720357afb532b73b6896 2022/01/04 17:22:24 Loaded ko.local/testgoexporter-18931265053c2910578ee5844178b709:beb82aa376e6822d87b72e69a48356427674630e844d720357afb532b73b6896 2022/01/04 17:22:24 Adding tag latest 2022/01/04 17:22:24 Added tag latest deployment.apps/prom-test created If we now check the current deployments we see our deployed applications:\nkubectl get deployments NAME READY UP-TO-DATE AVAILABLE AGE prom-test 1/1 1 1 68s The Deployment uses the image called ko.local/testgoexporter-18931265053c2910578ee5844178b709:beb82aa376e6822d87b72e69a4\nTo learn more, make sure to check out ko documentation at the GitHub repository!\n",
   "wordCount" : "434",
   "inLanguage": "en",
   "datePublished": "2021-01-01T00:00:00Z",
@@ -221,61 +221,61 @@ with <a href="https://minikube.sigs.k8s.io/docs/start/">minikube</a>, it enables
 <p>In this post, I will explain how to set up ko to directly build and deploy Golang applications to minikube.</p>
 <p>First, we need to start a local minikube cluster. Use the following command to deploy a local cluster and set it as the current
 <code>kubectl</code> context.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">minikube start
-</code></pre></div><p>Ko can build and push containers to all kinds of registries. Ko depends on an environment variable, <code>KO_DOCKER_REPO</code>, to identify where it should push images that it builds. For local development, we don&rsquo;t want to push the images to a remote registry, we will publish the images to the local Docker daemon by exporting the following environment variable:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export KO_DOCKER_REPO<span style="color:#f92672">=</span>ko.local
-</code></pre></div><p>Next, we need to point the shell to minikube&rsquo;s docker-daemon by running the following command</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">eval <span style="color:#66d9ef">$(</span>minikube -p minikube docker-env<span style="color:#66d9ef">)</span>
-</code></pre></div><p>Now we are ready to deploy Go applications directly to minikube.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>minikube start
+</span></span></code></pre></div><p>Ko can build and push containers to all kinds of registries. Ko depends on an environment variable, <code>KO_DOCKER_REPO</code>, to identify where it should push images that it builds. For local development, we don&rsquo;t want to push the images to a remote registry, we will publish the images to the local Docker daemon by exporting the following environment variable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>export KO_DOCKER_REPO<span style="color:#f92672">=</span>ko.local
+</span></span></code></pre></div><p>Next, we need to point the shell to minikube&rsquo;s docker-daemon by running the following command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>eval <span style="color:#66d9ef">$(</span>minikube -p minikube docker-env<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><p>Now we are ready to deploy Go applications directly to minikube.
 We will deploy a basic application that utilizes the Go prometheus-client using ko:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> (
-    <span style="color:#e6db74">&#34;fmt&#34;</span>
-    <span style="color:#e6db74">&#34;net/http&#34;</span>
-
-    <span style="color:#e6db74">&#34;github.com/prometheus/client_golang/prometheus/promhttp&#34;</span>
-)
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Handle</span>(<span style="color:#e6db74">&#34;/metrics&#34;</span>, <span style="color:#a6e22e">promhttp</span>.<span style="color:#a6e22e">Handler</span>())
-    <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">&#34;:8080&#34;</span>, <span style="color:#66d9ef">nil</span>)
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Starting the server on port 8080&#34;</span>)
-}
-</code></pre></div><p>The Go application is named <code>testGoExport</code>. Next, we will define the Kubernetes Deployment.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;github.com/prometheus/client_golang/prometheus/promhttp&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Handle</span>(<span style="color:#e6db74">&#34;/metrics&#34;</span>, <span style="color:#a6e22e">promhttp</span>.<span style="color:#a6e22e">Handler</span>())
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">&#34;:8080&#34;</span>, <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Starting the server on port 8080&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The Go application is named <code>testGoExport</code>. Next, we will define the Kubernetes Deployment.
 However, instead of using a path to a remote image, we will reference the Go binary by its importpath, prefixed with <code>ko://</code>
 For this to work, make sure that your <code>GOPATH</code> is set correctly.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># deployment.yaml</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">creationTimestamp</span>: <span style="color:#66d9ef">null</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">prom-test</span>
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">prom-test</span>
-
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">prom-test</span>
-  <span style="color:#f92672">strategy</span>: {}
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">creationTimestamp</span>: <span style="color:#66d9ef">null</span>
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">prom-test</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">containers</span>:
-        - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">ko://github.com/jufabeck2202/testGoExporter</span>
-          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">testgoexporter</span>
-          <span style="color:#f92672">ports</span>:
-            - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
-          <span style="color:#f92672">imagePullPolicy</span>: <span style="color:#ae81ff">Never</span>
-          <span style="color:#f92672">livenessProbe</span>:
-            <span style="color:#f92672">httpGet</span>:
-              <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/metrics</span>
-              <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
-          <span style="color:#f92672">resources</span>: {}
-</code></pre></div><p>To deploy the Deployment we will now run <code>ko apply -f deployment.yaml</code> instead of <code>kubectl apply -f deployment.yaml</code>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># deployment.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">creationTimestamp</span>: <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">prom-test</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">prom-test</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">prom-test</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">strategy</span>: {}
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">creationTimestamp</span>: <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">prom-test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">ko://github.com/jufabeck2202/testGoExporter</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">testgoexporter</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">imagePullPolicy</span>: <span style="color:#ae81ff">Never</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">livenessProbe</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">httpGet</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/metrics</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">resources</span>: {}
+</span></span></code></pre></div><p>To deploy the Deployment we will now run <code>ko apply -f deployment.yaml</code> instead of <code>kubectl apply -f deployment.yaml</code>.
 This will:</p>
 <ol>
 <li>Scan the YAML file for the <code>ko://</code> prefix</li>
@@ -285,8 +285,8 @@ This will:</p>
 <li>Deploy the Deployment
 After executing:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ko apply -f deployment.yaml
-</code></pre></div><pre tabindex="0"><code>Output:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ko apply -f deployment.yaml
+</span></span></code></pre></div><pre tabindex="0"><code>Output:
 
 2022/01/04 17:22:21 Using base gcr.io/distroless/static:nonroot for github.com/jufabeck2202/testGoExporter
 2022/01/04 17:22:22 Building github.com/jufabeck2202/testGoExporter for linux/amd64

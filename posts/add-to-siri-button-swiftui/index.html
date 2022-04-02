@@ -11,7 +11,7 @@
 <meta name="author" content="Julian Beck">
 <link rel="canonical" href="https://blog.julianbeck.com/posts/add-to-siri-button-swiftui/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.2d6dbfc6e0f8a1db1c9d082a76dc11d094328cf63f247bbc2421dfaa7f2bb170.css" integrity="sha256-LW2/xuD4odscnQgqdtwR0JQyjPY/JHu8JCHfqn8rsXA=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://blog.julianbeck.com/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.julianbeck.com/favicon-16x16.png">
@@ -20,7 +20,7 @@
 <link rel="mask-icon" href="https://blog.julianbeck.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.96.0" />
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -77,7 +77,7 @@ if (!doNotTrack) {
   "keywords": [
     "SwiftUI"
   ],
-  "articleBody": "For an app I was building I needed to add an Add to Siri Button, to add new Interaction to Shortcuts. While this straightforward in UIKit, it was more challenging in a project that uses SwiftUI.\n SwiftUI makes it easy to build and prototype good-looking UIs for all kinds of applications. While the code of SwiftUI is simple and clean, it is still young and a lot of API functionality is missing. That makes it a bit challenging to build applications that access System APIs.\nFortunately, UIViewControllers can be integrated into SwiftUI with ease using the UIViewControllerRepresentable. The following example shows how to add an Add to Siri Button using SwiftUI and UIViewControllerRepresentable and all required protocols to trigger and Add to Siri event.\nFirst, we need an IntentController, that defines the Add to Siri Button Button and triggers the INUIAddVoiceShortcutViewController, the protocol an object implements to receive notifications from the view controller when adding a shortcut to Siri:\nclass IntentController : UIViewController, INUIAddVoiceShortcutViewControllerDelegate{ private var myTableView: UITableView! override func viewWillDisappear(_ animated: Bool) { window2?.tintColor = UIColor.white } override func viewDidDisappear(_ animated: Bool) { window2?.tintColor = UIColor.white } override func viewDidLoad() { super.viewDidLoad() //Add to Siri Button let button = INUIAddVoiceShortcutButton(style: .blackOutline) self.view.addSubview(button) view.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true view.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true button.translatesAutoresizingMaskIntoConstraints = false button.addTarget(self, action: #selector(addToSiri), for: .touchUpInside) } @objc func addToSiri() { //add Intent let suggentedPhrase = \"Add New Score to Game\" let intent = NewPlayIntent() intent.suggestedInvocationPhrase = suggentedPhrase if let shortcut = INShortcut(intent: intent) { let viewController = INUIAddVoiceShortcutViewController(shortcut: shortcut) viewController.modalPresentationStyle = .formSheet viewController.delegate = self // Object conforming to `INUIAddVoiceShortcutViewControllerDelegate`. present(viewController, animated: true, completion: nil) } } func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) { controller.dismiss(animated: true) { } } func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) { controller.dismiss(animated: true, completion: nil) } } And the required Methods for INUIEditVoiceShortcutViewControllerDelegate, the protocol an object implements to receive notifications from the view controller that edits or removes a shortcut in Siri:\nextension IntentController: INUIEditVoiceShortcutViewControllerDelegate { func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didUpdate voiceShortcut: INVoiceShortcut?, error: Error?) { controller.dismiss(animated: true, completion: nil) } func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) { controller.dismiss(animated: true, completion: nil) } func editVoiceShortcutViewControllerDidCancel(_ controller: INUIEditVoiceShortcutViewController) { controller.dismiss(animated: true, completion: nil) } func present(_ addVoiceShortcutViewController: INUIAddVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) { addVoiceShortcutViewController.delegate = self addVoiceShortcutViewController.modalPresentationStyle = .formSheet present(addVoiceShortcutViewController, animated: true, completion: nil) } func present(_ editVoiceShortcutViewController: INUIEditVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) { editVoiceShortcutViewController.delegate = self editVoiceShortcutViewController.modalPresentationStyle = .formSheet present(editVoiceShortcutViewController, animated: true, completion: nil) } } This will present the Add to Siri form and allows the user to edit the phrase and afterward add to shortcuts.\nAfter implementing the UIViewController, we can finally use UIViewControllerRepresentable to be able to display the add to siri Button in SwiftUI:\nstruct IntentIntegratetController : UIViewControllerRepresentable{ func makeUIViewController(context: UIViewControllerRepresentableContext) - IntentController { return IntentController() date: 2020-05-20-T15:32:49+02:0 } func updateUIViewController(_ uiViewController: IntentController, context: UIViewControllerRepresentableContext) { } typealias UIViewControllerType = IntentController } Final SwiftUI View:\nList { IntentIntegratetController().frame(height: 50) } ",
+  "articleBody": "For an app I was building I needed to add an Add to Siri Button, to add new Interaction to Shortcuts. While this straightforward in UIKit, it was more challenging in a project that uses SwiftUI.\nSwiftUI makes it easy to build and prototype good-looking UIs for all kinds of applications. While the code of SwiftUI is simple and clean, it is still young and a lot of API functionality is missing. That makes it a bit challenging to build applications that access System APIs.\nFortunately, UIViewControllers can be integrated into SwiftUI with ease using the UIViewControllerRepresentable. The following example shows how to add an Add to Siri Button using SwiftUI and UIViewControllerRepresentable and all required protocols to trigger and Add to Siri event.\nFirst, we need an IntentController, that defines the Add to Siri Button Button and triggers the INUIAddVoiceShortcutViewController, the protocol an object implements to receive notifications from the view controller when adding a shortcut to Siri:\nclass IntentController : UIViewController, INUIAddVoiceShortcutViewControllerDelegate{   private var myTableView: UITableView!    override func viewWillDisappear(_ animated: Bool) {  window2?.tintColor = UIColor.white   }  override func viewDidDisappear(_ animated: Bool) {  window2?.tintColor = UIColor.white   }   override func viewDidLoad() {  super.viewDidLoad()   //Add to Siri Button  let button = INUIAddVoiceShortcutButton(style: .blackOutline)   self.view.addSubview(button)  view.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true  view.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true  button.translatesAutoresizingMaskIntoConstraints = false  button.addTarget(self, action: #selector(addToSiri), for: .touchUpInside)    }    @objc func addToSiri() {  //add Intent  let suggentedPhrase = \"Add New Score to Game\"  let intent = NewPlayIntent()     intent.suggestedInvocationPhrase = suggentedPhrase  if let shortcut = INShortcut(intent: intent) {    let viewController = INUIAddVoiceShortcutViewController(shortcut: shortcut)   viewController.modalPresentationStyle = .formSheet  viewController.delegate = self // Object conforming to `INUIAddVoiceShortcutViewControllerDelegate`.  present(viewController, animated: true, completion: nil)   }   }   func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {  controller.dismiss(animated: true) {   }  }   func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {  controller.dismiss(animated: true, completion: nil)  }   } And the required Methods for INUIEditVoiceShortcutViewControllerDelegate, the protocol an object implements to receive notifications from the view controller that edits or removes a shortcut in Siri:\n extension IntentController: INUIEditVoiceShortcutViewControllerDelegate {  func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didUpdate voiceShortcut: INVoiceShortcut?, error: Error?) {  controller.dismiss(animated: true, completion: nil)  }   func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) {  controller.dismiss(animated: true, completion: nil)  }   func editVoiceShortcutViewControllerDidCancel(_ controller: INUIEditVoiceShortcutViewController) {  controller.dismiss(animated: true, completion: nil)  }   func present(_ addVoiceShortcutViewController: INUIAddVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {  addVoiceShortcutViewController.delegate = self  addVoiceShortcutViewController.modalPresentationStyle = .formSheet  present(addVoiceShortcutViewController, animated: true, completion: nil)  }   func present(_ editVoiceShortcutViewController: INUIEditVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {  editVoiceShortcutViewController.delegate = self  editVoiceShortcutViewController.modalPresentationStyle = .formSheet  present(editVoiceShortcutViewController, animated: true, completion: nil)  }   } This will present the Add to Siri form and allows the user to edit the phrase and afterward add to shortcuts.\nAfter implementing the UIViewController, we can finally use UIViewControllerRepresentable to be able to display the add to siri Button in SwiftUI:\nstruct IntentIntegratetController : UIViewControllerRepresentable{    func makeUIViewController(context: UIViewControllerRepresentableContext) - IntentController {  return IntentController() date: 2020-05-20-T15:32:49+02:0  }   func updateUIViewController(_ uiViewController: IntentController, context: UIViewControllerRepresentableContext) {   }   typealias UIViewControllerType = IntentController   } Final SwiftUI View:\n List {  IntentIntegratetController().frame(height: 50) } ",
   "wordCount" : "484",
   "inLanguage": "en",
   "image":"https://blog.julianbeck.com/addtosiributton.png","datePublished": "2020-05-20T00:00:00Z",
@@ -217,134 +217,132 @@ if (!doNotTrack) {
 </div>
   </header> 
   <div class="post-content"><p>For an app I was building I needed to add an <strong>Add to Siri Button</strong>, to add new Interaction to Shortcuts. While this straightforward in UIKit, it was more challenging in a project that uses SwiftUI.</p>
-<pre tabindex="0"><code>
-</code></pre><p>SwiftUI makes it easy to build and prototype good-looking UIs for all kinds of applications.
+<pre tabindex="0"><code></code></pre><p>SwiftUI makes it easy to build and prototype good-looking UIs for all kinds of applications.
 While the code of SwiftUI is simple and clean, it is still young and a lot of API functionality is missing.
 That makes it a bit challenging to build applications that access System APIs.</p>
 <p>Fortunately,  UIViewControllers can be integrated into SwiftUI with ease using the <code>UIViewControllerRepresentable</code>. The following example shows how to add an <strong>Add to Siri Button</strong> using SwiftUI and <code>UIViewControllerRepresentable</code> and all required protocols to trigger and <strong>Add to Siri</strong> event.</p>
 <p><img loading="lazy" src="/addtosiributton.png" alt="ScoreTracker"  />
 </p>
 <p>First, we need an <code>IntentController</code>, that defines the  <strong>Add to Siri Button</strong>  Button and triggers the <code>INUIAddVoiceShortcutViewController</code>, the protocol an object implements to receive notifications from the view controller  when adding a shortcut to Siri:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">IntentController</span> : UIViewController, INUIAddVoiceShortcutViewControllerDelegate{
-    
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> myTableView: UITableView!
-    
-    
-    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewWillDisappear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
-        window2?.tintColor  = UIColor.white
-        
-    }
-    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidDisappear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
-        window2?.tintColor  = UIColor.white
-        
-    }
-    
-    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
-        <span style="color:#66d9ef">super</span>.viewDidLoad()
-
-    <span style="color:#75715e">//Add to Siri Button</span>
-        <span style="color:#66d9ef">let</span> button = INUIAddVoiceShortcutButton(style: .blackOutline)
-        
-        <span style="color:#66d9ef">self</span>.view.addSubview(button)
-        view.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = <span style="color:#66d9ef">true</span>
-        view.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = <span style="color:#66d9ef">true</span>
-        button.translatesAutoresizingMaskIntoConstraints = <span style="color:#66d9ef">false</span>
-        button.addTarget(<span style="color:#66d9ef">self</span>, action: <span style="color:#66d9ef">#selector</span>(addToSiri), <span style="color:#66d9ef">for</span>: .touchUpInside)
-        
-        
-    }
-    
-    
-    <span style="color:#66d9ef">@objc</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addToSiri</span>() {
-           <span style="color:#75715e">//add Intent</span>
-        <span style="color:#66d9ef">let</span> suggentedPhrase = <span style="color:#e6db74">&#34;Add New Score to Game&#34;</span>
-        <span style="color:#66d9ef">let</span> intent = NewPlayIntent()
-        
-        
-        
-        intent.suggestedInvocationPhrase = suggentedPhrase
-        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> shortcut = INShortcut(intent: intent) {
-            
-            
-            <span style="color:#66d9ef">let</span> viewController = INUIAddVoiceShortcutViewController(shortcut: shortcut)
-            
-            viewController.modalPresentationStyle = .formSheet
-            viewController.delegate = <span style="color:#66d9ef">self</span> <span style="color:#75715e">// Object conforming to `INUIAddVoiceShortcutViewControllerDelegate`.</span>
-            present(viewController, animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
-            
-        }
-        
-    }
-    
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addVoiceShortcutViewController</span>(<span style="color:#66d9ef">_</span> controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
-        controller.dismiss(animated: <span style="color:#66d9ef">true</span>) {
-            
-        }
-    }
-    
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addVoiceShortcutViewControllerDidCancel</span>(<span style="color:#66d9ef">_</span> controller: INUIAddVoiceShortcutViewController) {
-        controller.dismiss(animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
-    }
-    
-    
-}
-</code></pre></div><p>And the required Methods for <code>INUIEditVoiceShortcutViewControllerDelegate</code>, the protocol an object implements to receive notifications from the view controller that edits or removes a shortcut in Siri:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
-<span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">IntentController</span>: INUIEditVoiceShortcutViewControllerDelegate {
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">editVoiceShortcutViewController</span>(<span style="color:#66d9ef">_</span> controller: INUIEditVoiceShortcutViewController, didUpdate voiceShortcut: INVoiceShortcut?, error: Error?) {
-        controller.dismiss(animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
-    }
-    
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">editVoiceShortcutViewController</span>(<span style="color:#66d9ef">_</span> controller: INUIEditVoiceShortcutViewController, didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) {
-        controller.dismiss(animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
-    }
-    
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">editVoiceShortcutViewControllerDidCancel</span>(<span style="color:#66d9ef">_</span> controller: INUIEditVoiceShortcutViewController) {
-        controller.dismiss(animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
-    }
-    
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">present</span>(<span style="color:#66d9ef">_</span> addVoiceShortcutViewController: INUIAddVoiceShortcutViewController, <span style="color:#66d9ef">for</span> addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
-        addVoiceShortcutViewController.delegate = <span style="color:#66d9ef">self</span>
-        addVoiceShortcutViewController.modalPresentationStyle = .formSheet
-        present(addVoiceShortcutViewController, animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
-    }
-    
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">present</span>(<span style="color:#66d9ef">_</span> editVoiceShortcutViewController: INUIEditVoiceShortcutViewController, <span style="color:#66d9ef">for</span> addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
-        editVoiceShortcutViewController.delegate = <span style="color:#66d9ef">self</span>
-        editVoiceShortcutViewController.modalPresentationStyle = .formSheet
-        present(editVoiceShortcutViewController, animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
-    }
-    
-    
-}
-</code></pre></div><p>This will present the <strong>Add to Siri</strong> form and allows the user to edit the phrase and afterward add to shortcuts.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">IntentController</span> : UIViewController, INUIAddVoiceShortcutViewControllerDelegate{
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> myTableView: UITableView!
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewWillDisappear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
+</span></span><span style="display:flex;"><span>        window2?.tintColor  = UIColor.white
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidDisappear</span>(<span style="color:#66d9ef">_</span> animated: Bool) {
+</span></span><span style="display:flex;"><span>        window2?.tintColor  = UIColor.white
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>.viewDidLoad()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Add to Siri Button</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> button = INUIAddVoiceShortcutButton(style: .blackOutline)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">self</span>.view.addSubview(button)
+</span></span><span style="display:flex;"><span>        view.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        view.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        button.translatesAutoresizingMaskIntoConstraints = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        button.addTarget(<span style="color:#66d9ef">self</span>, action: <span style="color:#66d9ef">#selector</span>(addToSiri), <span style="color:#66d9ef">for</span>: .touchUpInside)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">@objc</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addToSiri</span>() {
+</span></span><span style="display:flex;"><span>           <span style="color:#75715e">//add Intent</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> suggentedPhrase = <span style="color:#e6db74">&#34;Add New Score to Game&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> intent = NewPlayIntent()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        intent.suggestedInvocationPhrase = suggentedPhrase
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> shortcut = INShortcut(intent: intent) {
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">let</span> viewController = INUIAddVoiceShortcutViewController(shortcut: shortcut)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            viewController.modalPresentationStyle = .formSheet
+</span></span><span style="display:flex;"><span>            viewController.delegate = <span style="color:#66d9ef">self</span> <span style="color:#75715e">// Object conforming to `INUIAddVoiceShortcutViewControllerDelegate`.</span>
+</span></span><span style="display:flex;"><span>            present(viewController, animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addVoiceShortcutViewController</span>(<span style="color:#66d9ef">_</span> controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
+</span></span><span style="display:flex;"><span>        controller.dismiss(animated: <span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addVoiceShortcutViewControllerDidCancel</span>(<span style="color:#66d9ef">_</span> controller: INUIAddVoiceShortcutViewController) {
+</span></span><span style="display:flex;"><span>        controller.dismiss(animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And the required Methods for <code>INUIEditVoiceShortcutViewControllerDelegate</code>, the protocol an object implements to receive notifications from the view controller that edits or removes a shortcut in Siri:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">IntentController</span>: INUIEditVoiceShortcutViewControllerDelegate {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">editVoiceShortcutViewController</span>(<span style="color:#66d9ef">_</span> controller: INUIEditVoiceShortcutViewController, didUpdate voiceShortcut: INVoiceShortcut?, error: Error?) {
+</span></span><span style="display:flex;"><span>        controller.dismiss(animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">editVoiceShortcutViewController</span>(<span style="color:#66d9ef">_</span> controller: INUIEditVoiceShortcutViewController, didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) {
+</span></span><span style="display:flex;"><span>        controller.dismiss(animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">editVoiceShortcutViewControllerDidCancel</span>(<span style="color:#66d9ef">_</span> controller: INUIEditVoiceShortcutViewController) {
+</span></span><span style="display:flex;"><span>        controller.dismiss(animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">present</span>(<span style="color:#66d9ef">_</span> addVoiceShortcutViewController: INUIAddVoiceShortcutViewController, <span style="color:#66d9ef">for</span> addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
+</span></span><span style="display:flex;"><span>        addVoiceShortcutViewController.delegate = <span style="color:#66d9ef">self</span>
+</span></span><span style="display:flex;"><span>        addVoiceShortcutViewController.modalPresentationStyle = .formSheet
+</span></span><span style="display:flex;"><span>        present(addVoiceShortcutViewController, animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">present</span>(<span style="color:#66d9ef">_</span> editVoiceShortcutViewController: INUIEditVoiceShortcutViewController, <span style="color:#66d9ef">for</span> addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
+</span></span><span style="display:flex;"><span>        editVoiceShortcutViewController.delegate = <span style="color:#66d9ef">self</span>
+</span></span><span style="display:flex;"><span>        editVoiceShortcutViewController.modalPresentationStyle = .formSheet
+</span></span><span style="display:flex;"><span>        present(editVoiceShortcutViewController, animated: <span style="color:#66d9ef">true</span>, completion: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This will present the <strong>Add to Siri</strong> form and allows the user to edit the phrase and afterward add to shortcuts.</p>
 <p><img loading="lazy" src="/siriModal.png" alt="ScoreTracker"  />
 </p>
 <p>After implementing the UIViewController, we can finally use <code>UIViewControllerRepresentable</code> to be able to display the
 add to siri Button in SwiftUI:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">IntentIntegratetController</span> : UIViewControllerRepresentable{
-    
-    
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeUIViewController</span>(context: UIViewControllerRepresentableContext&lt;IntentIntegratetController&gt;) -&gt; IntentController {
-        <span style="color:#66d9ef">return</span> IntentController()
-date: <span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">05</span><span style="color:#f92672">-</span><span style="color:#ae81ff">20</span><span style="color:#f92672">-</span>T15:<span style="color:#ae81ff">32</span>:<span style="color:#ae81ff">49</span><span style="color:#f92672">+</span><span style="color:#ae81ff">02</span>:<span style="color:#ae81ff">0</span>
-    }
-    
-    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateUIViewController</span>(<span style="color:#66d9ef">_</span> uiViewController: IntentController, context: UIViewControllerRepresentableContext&lt;IntentIntegratetController&gt;) {
-        
-    }
-    
-    <span style="color:#66d9ef">typealias</span> UIViewControllerType = IntentController
-
-    
-}
-</code></pre></div><p>Final SwiftUI View:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
-List {
-    IntentIntegratetController().frame(height: <span style="color:#ae81ff">50</span>)
-}
-
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">IntentIntegratetController</span> : UIViewControllerRepresentable{
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeUIViewController</span>(context: UIViewControllerRepresentableContext&lt;IntentIntegratetController&gt;) -&gt; IntentController {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> IntentController()
+</span></span><span style="display:flex;"><span>date: <span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">05</span><span style="color:#f92672">-</span><span style="color:#ae81ff">20</span><span style="color:#f92672">-</span>T15:<span style="color:#ae81ff">32</span>:<span style="color:#ae81ff">49</span><span style="color:#f92672">+</span><span style="color:#ae81ff">02</span>:<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateUIViewController</span>(<span style="color:#66d9ef">_</span> uiViewController: IntentController, context: UIViewControllerRepresentableContext&lt;IntentIntegratetController&gt;) {
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">typealias</span> UIViewControllerType = IntentController
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Final SwiftUI View:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>List {
+</span></span><span style="display:flex;"><span>    IntentIntegratetController().frame(height: <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 </div>
   <footer class="post-footer">
     <ul class="post-tags">
