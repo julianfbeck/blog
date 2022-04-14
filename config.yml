@@ -84,7 +84,7 @@ params:
         - name: github
           url: "https://github.com/julianfbeck"
         - name: twitter
-          url: "https://twitter.com/kickbeak"
+          url: "https://twitter.com/julianfbeck"
         - name: linkedin
           url: "https://www.linkedin.com/in/julian-beck/"
         - name: RsS
