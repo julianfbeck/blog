@@ -1,7 +1,9 @@
 baseURL: "https://blog.julianbeck.com/"
 title: Julian's Blog
 paginate: 5
-theme: PaperMod
+theme: 
+    - PaperMod
+    - plausible-hugo
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
@@ -9,7 +11,6 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 enableEmoji: true
-googleAnalytics: UA-123121612-2
 
 minify:
     disableXML: true
@@ -58,6 +59,10 @@ params:
     ShowToc: true
     # comments: false
     images: ["papermod-cover.png"]
+    plausible:
+        enable: true
+        domain: blog.julianbeck.com
+        selfhosted_domain: plausible.home.juli.sh
 
     profileMode:
         enabled: false
