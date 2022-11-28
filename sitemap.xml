@@ -2,25 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.julianbeck.com/categories/</loc>
-    <lastmod>2021-01-06T00:00:00+00:00</lastmod>
+    <loc>https://blog.julianbeck.com/posts/kubernetes-dashboard-in-notion/</loc>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.julianbeck.com/posts/2021-01-05-use-uptimekuma-on-kubernetes/</loc>
-    <lastmod>2021-01-06T00:00:00+00:00</lastmod>
+    <loc>https://blog.julianbeck.com/categories/</loc>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/tags/go/</loc>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/categories/go/</loc>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/</loc>
-    <lastmod>2021-01-06T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/tags/ko/</loc>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/tags/kubernetes/</loc>
-    <lastmod>2021-01-06T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/categories/kubernetes/</loc>
-    <lastmod>2021-01-06T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/posts/</loc>
-    <lastmod>2021-01-06T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/tags/</loc>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.julianbeck.com/posts/2021-01-05-use-uptimekuma-on-kubernetes/</loc>
     <lastmod>2021-01-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/tags/traefik/</loc>
@@ -45,15 +57,6 @@
     <lastmod>2021-01-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/posts/2021-01-04-ko-local-go-development-with-minikube/</loc>
-    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/tags/go/</loc>
-    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/categories/go/</loc>
-    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.julianbeck.com/tags/ko/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.julianbeck.com/tags/minikube/</loc>

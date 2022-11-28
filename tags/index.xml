@@ -9,11 +9,29 @@
       <link>https://blog.julianbeck.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go</title>
+      <link>https://blog.julianbeck.com/tags/go/</link>
+      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ko</title>
+      <link>https://blog.julianbeck.com/tags/ko/</link>
+      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/tags/ko/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>kubernetes</title>
       <link>https://blog.julianbeck.com/tags/kubernetes/</link>
-      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://blog.julianbeck.com/tags/kubernetes/</guid>
       <description></description>
@@ -52,24 +70,6 @@
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://blog.julianbeck.com/tags/raspberrypi/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go</title>
-      <link>https://blog.julianbeck.com/tags/go/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ko</title>
-      <link>https://blog.julianbeck.com/tags/ko/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/tags/ko/</guid>
       <description></description>
     </item>
     
