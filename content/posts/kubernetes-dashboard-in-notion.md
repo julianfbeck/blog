@@ -1,8 +1,9 @@
 ---
 title: "Build a Kubernetes Dashboard in Notion using a go controller"
+date: "2022-11-28"
 # weight: 1
 # aliases: ["/first"]
-tags: ["go" ,"kubernetes", ,"ko"]
+tags: ["go" ,"kubernetes","ko"]
 categories: ["go", "kubernetes"]
 author: "Julian Beck"
 showToc: true
