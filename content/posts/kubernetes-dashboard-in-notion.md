@@ -1,6 +1,6 @@
 ---
 title: "Build a Kubernetes Dashboard in Notion using a go controller"
-date: "2022-12-1"
+date: "2022-11-28"
 # weight: 1
 # aliases: ["/first"]
 tags: ["go" ,"kubernetes", ,"ko"]
