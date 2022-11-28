@@ -54,7 +54,6 @@ Now you are ready to use the Notion API with the particular page and all subpage
 To setup the Kubernetes cluster we will use [kind](https://kind.sigs.k8s.io/). Kind is a tool for running local Kubernetes clusters using Docker container "nodes".
 
 To create a cluster run the following command to create a cluster with 1 control-plane node and 1 worker nodes:
-```sh
 ```sh 
 make create
 ```
@@ -167,9 +166,9 @@ To deploy the controller we will use ko. [ko](https://github.com/google/ko) is a
 We will use ko to build and deploy the custom controller directly to the kubernetes-cluster, set up by kind.
 
 We created 3 manifest files to deploy the controller:
-* [/deployment.yaml](https://github.com/julianfbeck/k8s-in-notion/blob/main/k8s/deployment.yaml) - The deployment manifest file. This contains the notion_token and the page_id as environment variables.
-* [/service-account.yaml](https://github.com/julianfbeck/k8s-in-notion/blob/main/k8s/sa.yaml) - The service account manifest file. Creates a new service account
-* [/clusterrolebinding.yaml](https://github.com/julianfbeck/k8s-in-notion/blob/main/k8s/clusterrolebinding.yaml) - The clusterrolebinding manifest file to bind the service account to the cluster role view in order to view cluster-wide resources.
+* [deployment.yaml](https://github.com/julianfbeck/k8s-in-notion/blob/main/k8s/deployment.yaml) - The deployment manifest file. This contains the notion_token and the page_id as environment variables.
+* [service-account.yaml](https://github.com/julianfbeck/k8s-in-notion/blob/main/k8s/sa.yaml) - The service account manifest file. Creates a new service account
+* [clusterrolebinding.yaml](https://github.com/julianfbeck/k8s-in-notion/blob/main/k8s/clusterrolebinding.yaml) - The clusterrolebinding manifest file to bind the service account to the cluster role view in order to view cluster-wide resources.
 
 To deploy the controller replace the `KO_DOCKER_REPO` environment variable inside the `Makefile` with your docker repository. Then run the following command:
 ```bash
