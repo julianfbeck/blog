@@ -1,9 +1,9 @@
 ---
 title: "My experience building a community bingo using the T3 Stack"
-date: "2022-11-28"
+date: "2023-01-02"
 # weight: 1
 # aliases: ["/first"]
-tags: ["node" ,"react","web"]
+tags: ["node" ,"react", "web"]
 categories: ["web"]
 author: "Julian Beck"
 showToc: true
