@@ -11,7 +11,7 @@ TocOpen: true
 draft: false
 hidemeta: false
 comments: false
-description: "My experience building a community bingo for the youtube series '7 vs. wild with over 1000 participants" 
+description: "My experience building a community bingo for the youtube series '7 vs. Wild' with over 1000 participants" 
 disableShare: false
 disableHLJS: false
 hideSummary: false
