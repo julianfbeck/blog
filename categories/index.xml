@@ -29,6 +29,15 @@
     </item>
     
     <item>
+      <title>web</title>
+      <link>https://blog.julianbeck.com/categories/web/</link>
+      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/categories/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>traefik</title>
       <link>https://blog.julianbeck.com/categories/traefik/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
