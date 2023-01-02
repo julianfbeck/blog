@@ -9,7 +9,16 @@
       <link>https://blog.julianbeck.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 28 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My experience building a community bingo using the T3 Stack</title>
+      <link>https://blog.julianbeck.com/posts/experience-building-a-community-bingo-using-t3-stack/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/posts/experience-building-a-community-bingo-using-t3-stack/</guid>
+      <description>My experience building a community bingo for the youtube series &amp;#39;7 vs. wild with over 1000 participants</description>
+    </item>
+    
     <item>
       <title>Build a Kubernetes Dashboard in Notion using a go controller</title>
       <link>https://blog.julianbeck.com/posts/kubernetes-dashboard-in-notion/</link>
@@ -17,15 +26,6 @@
       
       <guid>https://blog.julianbeck.com/posts/kubernetes-dashboard-in-notion/</guid>
       <description>Build a live updating Kubernetes Dashboard in Notion using a custom controller in golang</description>
-    </item>
-    
-    <item>
-      <title>My experience building a community bingo using the T3 Stack</title>
-      <link>https://blog.julianbeck.com/posts/experience-building-a-community-bingo-using-t3-stack/</link>
-      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/posts/experience-building-a-community-bingo-using-t3-stack/</guid>
-      <description>My experience building a community bingo for the youtube series &amp;#39;7 vs. wild with over 1000 participants</description>
     </item>
     
     <item>

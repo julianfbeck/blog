@@ -9,7 +9,34 @@
       <link>https://blog.julianbeck.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 28 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.julianbeck.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>node</title>
+      <link>https://blog.julianbeck.com/tags/node/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/tags/node/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>react</title>
+      <link>https://blog.julianbeck.com/tags/react/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/tags/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web</title>
+      <link>https://blog.julianbeck.com/tags/web/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.julianbeck.com/tags/web/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Go</title>
       <link>https://blog.julianbeck.com/tags/go/</link>
@@ -34,33 +61,6 @@
       <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://blog.julianbeck.com/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>node</title>
-      <link>https://blog.julianbeck.com/tags/node/</link>
-      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/tags/node/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>react</title>
-      <link>https://blog.julianbeck.com/tags/react/</link>
-      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/tags/react/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>web</title>
-      <link>https://blog.julianbeck.com/tags/web/</link>
-      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.julianbeck.com/tags/web/</guid>
       <description></description>
     </item>
     
