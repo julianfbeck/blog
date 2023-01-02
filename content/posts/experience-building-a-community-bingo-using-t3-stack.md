@@ -30,7 +30,7 @@ editPost:
     appendFilePath: true # to append file path to Edit link
 ---
 
-For the german Youtube series "7 vs. Wild" I wanted to build a community bingo. 
+For the german Youtube series "7 vs. Wild" I wanted to build a community bingo at [sevenvsbingo.de](https://sevenvsbingo.de/).
 Before the series started, the community was asked to submit their ideas for the bingo cards and were able to create their own bingo cards using the submitted ideas. Each participant earned points based on the number of bingos and difficulty of the choosen Bingo card. You can check out the final result [here](https://sevenvsbingo.de/) and the winner board [here](https://sevenvsbingo.de/board/ncOdCcNbDGiD).
 
 In total the site had:
