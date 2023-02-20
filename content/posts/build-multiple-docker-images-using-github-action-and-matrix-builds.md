@@ -19,11 +19,7 @@ searchHidden: true
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
-cover:
-    image: "cluster-preview.png" # image path/url
-    alt: "Notion Table with cluster info" # alt text
-    relative: false # when using page bundles set this to true
-    hidden: true # only hide on current single page
+
 editPost:
     URL: "https://github.com/jufabeck2202/blog/tree/master/content"
     Text: "Suggest Changes" # edit text
