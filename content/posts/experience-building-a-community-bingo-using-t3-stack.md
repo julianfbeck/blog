@@ -132,7 +132,7 @@ When viewing the /points or /board page the application would query the database
 I used cloudflare to manage the DNS and provide basic DDOS protection. Cloudflare also provided basic caching of static assets.
 ![cloudflare dashboard](/Cloudflare.png)
 ### Analytics
-For analitics i used [plausible](https://plausible.io/). Plausible is a privacy friendly analytics tool that does not track users. It only tracks page views and does not use cookies. I self-hosted plausible on my local k3s cluster. 
+For analytics# I used [plausible](https://plausible.io/). Plausible is a privacy friendly analytics tool that does not track users. It only tracks page views and does not use cookies. I self-hosted plausible on my local k3s cluster. 
 
 Most of the page views correlated to the release of new episodes of 7 vs. Wild. In the first week we did some promotion on twitter and reached a lot of users:
 ![Plausible analytics](/plausible.png)
