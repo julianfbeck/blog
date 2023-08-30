@@ -1,26 +1,35 @@
-# Compiled Object files, Static and Dynamic libs (Shared Objects)
-*.o
-*.a
-*.so
+# build output
+dist/
+.output/
 
-# Folders
-_obj
-_test
+# dependencies
+node_modules/
 
-# Architecture specific extensions/prefixes
-*.[568vq]
-[568vq].out
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-*.cgo1.go
-*.cgo2.c
-_cgo_defun.c
-_cgo_gotypes.go
-_cgo_export.*
 
-_testmain.go
+# environment variables
+.env
+.env.production
 
-*.exe
-*.test
-
-/public
+# macOS-specific files
 .DS_Store
+
+# ignore .astro directory
+.astro
+
+# ignore Jampack cache files
+.jampack/
+
+# yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
