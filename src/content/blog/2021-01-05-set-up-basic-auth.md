@@ -165,7 +165,7 @@ kubectl create -f basic-auth-middleware.yaml
 kubectl create -f test-auth-secret.yaml
 ```
 If you now open your Traefik-Dashboard you will see that Traefik found the `test-auth-middleware`:
-![traefik](/traefik.png)
+![traefik](/media/traefik.png)
 
 To enable **BasicAuth** for a specific route, use the name displayed in the Dashboard.
 The Name consists out of `<namespace>-<middleware-name>@kubernetescrd`.
