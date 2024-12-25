@@ -10,6 +10,9 @@ export interface Props {
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
+  publishDate?: Date;
+  type?: 'website' | 'article';
+  keywords?: string[];
 }
 
 const {
@@ -18,12 +21,33 @@ const {
   description = SITE.desc,
   ogImage = SITE.ogImage,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  publishDate,
+  type = 'website',
+  keywords = ['Cloud Platform Engineering', 'DevOps', 'Kubernetes', 'iOS Development', 'Web Development'],
 } = Astro.props;
 
 const socialImageURL = new URL(
   ogImage ? ogImage : SITE.ogImage,
   Astro.url.origin
 ).href;
+
+// JSON-LD structured data
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": type === 'article' ? 'BlogPosting' : 'WebSite',
+  "url": canonicalURL,
+  "name": title,
+  "description": description,
+  ...(type === 'article' && {
+    "author": {
+      "@type": "Person",
+      "name": author,
+      "url": SITE.website
+    },
+    "datePublished": publishDate?.toISOString(),
+    "image": socialImageURL,
+  }),
+};
 ---
 
 <!DOCTYPE html>
@@ -40,13 +64,19 @@ const socialImageURL = new URL(
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
+    <meta name="keywords" content={keywords.join(', ')} />
+    <meta name="robots" content="index,follow" />
+    <meta name="language" content="English" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImageURL} />
+    <meta property="og:site_name" content={SITE.title} />
+    {publishDate && <meta property="article:published_time" content={publishDate.toISOString()} />}
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -54,6 +84,12 @@ const socialImageURL = new URL(
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title={`${SITE.title} RSS Feed`} href="/rss.xml" />
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -82,6 +118,4 @@ const socialImageURL = new URL(
   <body>
     <slot />
   </body>
-
-
 </html>

@@ -3,9 +3,9 @@ import type { Site, SocialObjects } from "./types";
 export const SITE: Site = {
   website: "https://blog.julianbeck.com/",
   author: "Julian Beck",
-  desc: "Small Blog about Cloud Platform Engineering Web Development and iOS Development",
-  title: "Julian Beck",
-  ogImage: "astropaper-og.jpg",
+  desc: "Exploring Cloud Platform Engineering, DevOps practices, and modern software development. In-depth articles about Kubernetes, cloud-native solutions, and iOS development.",
+  title: "Julian Beck's Blog",
+  ogImage: "og-image.jpg",
   lightAndDarkMode: true,
   postPerPage: 10,
 };
@@ -23,7 +23,7 @@ export const SOCIALS: SocialObjects = [
   {
     name: "Github",
     href: "https://github.com/julianfbeck",
-    linkTitle: `Julian Beck on Github`,
+    linkTitle: `Julian Beck on Github - Cloud Platform Engineering and DevOps Projects`,
     active: true,
   },
   {
@@ -41,13 +41,13 @@ export const SOCIALS: SocialObjects = [
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/julian-beck/",
-    linkTitle: `Julian Beck } on LinkedIn`,
+    linkTitle: `Connect with Julian Beck on LinkedIn - Cloud Platform Engineer`,
     active: true,
   },
   {
     name: "Mail",
     href: "mailto:contact@julianbeck.com",
-    linkTitle: `Send an email to Julian Beck`,
+    linkTitle: `Contact Julian Beck - Cloud Platform Engineering Inquiries`,
     active: true,
   },
   {
