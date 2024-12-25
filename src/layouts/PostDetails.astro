@@ -23,38 +23,70 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
 
 <Layout title={title} author={author} description={description} ogImage={ogUrl} canonicalURL={canonicalURL}>
   <Header />
-  <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
+  <div class="mx-auto flex w-full max-w-3xl justify-start px-4 sm:px-8">
     <button
-      class="focus-outline mb-2 mt-8 flex hover:opacity-75"
+      class="focus-outline mb-4 mt-8 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium 
+      bg-skin-card hover:bg-skin-card-muted transition-colors duration-300"
       onclick="history.back()"
     >
-      <svg xmlns="http://www.w3.org/2000/svg"
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-skin-base"
         ><path
           d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
         ></path>
-      </svg><span>Go back</span>
+      </svg>
+      <span>Go back</span>
     </button>
   </div>
   <main id="main-content">
-    <h1 class="post-title">{title}</h1>
-    <Datetime datetime={pubDatetime} size="lg" className="my-2" />
-    <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
-      <Content />
-    </article>
+    <article class="post-content prose mx-auto mt-8 max-w-3xl rounded-2xl bg-skin-card/30 p-6 sm:p-10 backdrop-blur-sm">
+      <header class="post-header mb-8">
+        <h1 class="post-title mb-4">{title}</h1>
+        <div class="post-meta flex items-center gap-4 text-skin-base/70">
+          <Datetime datetime={pubDatetime} size="lg" className="my-2" />
+          {author && <span class="author">By {author}</span>}
+        </div>
+      </header>
+      
+      <div class="prose-content">
+        <Content />
+      </div>
 
-    <ul class="tags-container">
-      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
-    </ul>
+      <footer class="post-footer mt-12 pt-6 border-t border-skin-line">
+        <div class="tags-container">
+          <h2 class="text-lg font-medium mb-4 text-skin-base/80">Tags</h2>
+          <ul class="flex flex-wrap gap-3">
+            {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
+          </ul>
+        </div>
+      </footer>
+    </article>
   </main>
   <Footer />
 </Layout>
 
 <style>
   main {
-    @apply mx-auto w-full max-w-3xl px-4 pb-12;
+    @apply mx-auto w-full max-w-3xl px-4 pb-12 sm:px-8;
   }
   .post-title {
-    @apply text-2xl font-semibold text-skin-accent;
+    @apply text-3xl sm:text-4xl font-bold text-skin-base/90 leading-tight;
+  }
+  .prose-content {
+    @apply prose-headings:text-skin-base/90 
+    prose-p:text-skin-base/80 
+    prose-a:text-skin-accent hover:prose-a:text-skin-accent/80
+    prose-strong:text-skin-base/90
+    prose-code:text-skin-base/90
+    prose-pre:bg-skin-card
+    prose-blockquote:border-l-skin-accent
+    prose-blockquote:bg-skin-card/30
+    prose-blockquote:text-skin-base/80
+    prose-img:rounded-xl
+    prose-img:shadow-smooth
+    prose-hr:border-skin-line;
+  }
+  .post-content {
+    @apply shadow-smooth hover:shadow-smooth-lg transition-shadow duration-300;
   }
   .tags-container {
     @apply my-8;

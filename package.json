@@ -18,10 +18,12 @@
   "dependencies": {
     "@astrojs/rss": "^2.4.1",
     "@resvg/resvg-js": "^2.4.1",
+    "@tailwindcss/forms": "^0.5.9",
     "astro": "^2.4.5",
     "astro-analytics": "^2.7.0",
     "fuse.js": "^6.6.2",
     "github-slugger": "^2.0.0",
+    "inter-font": "^3.19.0",
     "remark-collapse": "^0.1.2",
     "remark-toc": "^8.0.1",
     "satori": "^0.8.1",

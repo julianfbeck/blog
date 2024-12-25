@@ -13,7 +13,7 @@ export interface Props {
 const { activeNav } = Astro.props;
 ---
 
-<header>
+<header class="sticky top-0 z-50 backdrop-blur-md bg-skin-fill/80 shadow-smooth transition-all duration-300">
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
@@ -76,7 +76,7 @@ const { activeNav } = Astro.props;
           <li>
             <LinkButton
               href="/search"
-              className={`focus-outline p-3 sm:p-1 ${
+              className={`focus-outline p-2 rounded-full hover:bg-skin-card transition-colors duration-300 ${
                 activeNav === "search" ? "active" : ""
               }`}
               ariaLabel="search"
@@ -96,7 +96,7 @@ const { activeNav } = Astro.props;
               SITE.lightAndDarkMode && (
                 <button
                   id="theme-btn"
-                  class="focus-outline"
+                  class="focus-outline p-2 rounded-full hover:bg-skin-card transition-colors duration-300"
                   title="Toggles light & dark"
                   aria-label="auto"
                   aria-live="polite"
@@ -120,26 +120,26 @@ const { activeNav } = Astro.props;
 
 <style>
   #skip-to-content {
-    @apply absolute -top-full left-16 z-50 bg-skin-accent px-3 py-2 text-skin-inverted transition-all focus:top-4;
+    @apply absolute -top-full left-16 z-50 bg-skin-accent/90 px-3 py-2 text-skin-inverted transition-all focus:top-4 rounded-md;
   }
   .nav-container {
     @apply mx-auto flex max-w-3xl flex-col items-center justify-between sm:flex-row;
   }
   .top-nav-wrap {
-    @apply relative flex w-full items-start justify-between p-4 sm:items-center sm:py-8;
+    @apply relative flex w-full items-start justify-between p-4 sm:items-center sm:py-6;
   }
   .logo {
-    @apply absolute py-1 text-xl font-semibold sm:static sm:text-2xl;
+    @apply absolute py-1 text-xl font-semibold sm:static sm:text-2xl hover:text-skin-accent transition-colors duration-300;
   }
   .hamburger-menu {
-    @apply self-end p-2 sm:hidden;
+    @apply self-end p-2 sm:hidden hover:bg-skin-card rounded-lg transition-colors duration-300;
   }
   .hamburger-menu svg {
-    @apply h-6 w-6 scale-125 fill-skin-base;
+    @apply h-6 w-6 scale-125 fill-skin-base transition-colors duration-300;
   }
 
   nav {
-    @apply flex w-full flex-col items-center bg-skin-fill sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
+    @apply flex w-full flex-col items-center bg-skin-fill/95 backdrop-blur-md sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
   }
   nav ul {
     @apply mt-4 grid w-44 grid-cols-2 grid-rows-4 gap-x-2 gap-y-2 sm:ml-0 sm:mt-0 sm:w-auto sm:gap-x-5 sm:gap-y-0;
@@ -148,7 +148,8 @@ const { activeNav } = Astro.props;
     @apply col-span-2 flex items-center justify-center;
   }
   nav ul li a {
-    @apply w-full px-4 py-3 text-center font-medium hover:text-skin-accent sm:my-0 sm:px-2 sm:py-1;
+    @apply w-full px-4 py-3 text-center font-medium hover:text-skin-accent transition-colors duration-300 
+    sm:my-0 sm:px-2 sm:py-1 rounded-full hover:bg-skin-card/50;
   }
   nav ul li:nth-child(4) a {
     @apply w-auto;
@@ -158,7 +159,7 @@ const { activeNav } = Astro.props;
     @apply col-span-1;
   }
   nav a.active {
-    @apply underline decoration-wavy decoration-2 underline-offset-4;
+    @apply text-skin-accent bg-skin-card/30 font-semibold;
   }
   nav a.active svg {
     @apply fill-skin-accent;
@@ -168,17 +169,17 @@ const { activeNav } = Astro.props;
     @apply p-1;
   }
   nav button svg {
-    @apply h-6 w-6 fill-skin-base hover:fill-skin-accent;
+    @apply h-6 w-6 fill-skin-base transition-colors duration-300 hover:fill-skin-accent;
   }
   #theme-btn {
     @apply p-3 sm:p-1;
   }
   #theme-btn svg {
-    @apply scale-125 hover:rotate-12 sm:scale-100;
+    @apply scale-125 transition-all duration-300 hover:rotate-12 sm:scale-100;
   }
 
   .menu-icon line {
-    @apply transition-opacity duration-75 ease-in-out;
+    @apply transition-opacity duration-200 ease-in-out;
   }
   .menu-icon .close {
     opacity: 0;
@@ -199,12 +200,8 @@ const { activeNav } = Astro.props;
 
   menuBtn?.addEventListener("click", () => {
     const menuExpanded = menuBtn.getAttribute("aria-expanded") === "true";
-    menuIcon?.classList.toggle("is-active");
     menuBtn.setAttribute("aria-expanded", menuExpanded ? "false" : "true");
-    menuBtn.setAttribute(
-      "aria-label",
-      menuExpanded ? "Open Menu" : "Close Menu"
-    );
+    menuIcon?.classList.toggle("is-active");
     menuItems?.classList.toggle("display-none");
   });
 </script>
