@@ -20,13 +20,20 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          dest: ~/setup-pnpm
+          run_install: null
+          package_json_file: package.json
+          standalone: false
       - name: Install, build, and upload your site
         uses: withastro/action@v0
         with:
           path: .
           node-version: 16
           package-manager: pnpm
-          pnpm-version: 7.x.x
 
   deploy:
     needs: build
