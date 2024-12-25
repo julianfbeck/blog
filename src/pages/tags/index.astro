@@ -6,6 +6,7 @@ import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Tag from "@components/Tag.astro";
 import getUniqueTags from "@utils/getUniqueTags";
+import { slugifyStr } from "@utils/slugify";
 import { SITE } from "@config";
 
 const posts = await getCollection("blog");
@@ -13,7 +14,9 @@ let tags = getUniqueTags(posts);
 
 // Get post count for each tag
 const tagCounts = tags.reduce((acc, tag) => {
-  const count = posts.filter(post => post.data.tags.includes(tag)).length;
+  const count = posts.filter(post => 
+    post.data.tags.map(t => slugifyStr(t)).includes(slugifyStr(tag))
+  ).length;
   acc[tag] = count;
   return acc;
 }, {} as Record<string, number>);
