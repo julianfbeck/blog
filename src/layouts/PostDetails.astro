@@ -23,7 +23,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
 
 <Layout title={title} author={author} description={description} ogImage={ogUrl} canonicalURL={canonicalURL}>
   <Header />
-  <div class="mx-auto flex w-full max-w-3xl justify-start px-4 sm:px-8">
+  <div class="mx-auto flex w-full max-w-4xl justify-start px-4 sm:px-8">
     <button
       class="focus-outline mb-4 mt-8 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium 
       bg-skin-card hover:bg-skin-card-muted transition-colors duration-300"
@@ -38,7 +38,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
     </button>
   </div>
   <main id="main-content">
-    <article class="post-content prose mx-auto mt-8 max-w-3xl rounded-2xl bg-skin-card/30 p-6 sm:p-10 backdrop-blur-sm">
+    <article class="post-content prose mx-auto mt-8 max-w-4xl rounded-2xl bg-skin-card/30 p-6 sm:p-10 backdrop-blur-sm">
       <header class="post-header mb-8">
         <h1 class="post-title mb-4">{title}</h1>
         <div class="post-meta flex items-center gap-4 text-skin-base/70">
@@ -66,7 +66,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
 
 <style>
   main {
-    @apply mx-auto w-full max-w-3xl px-4 pb-12 sm:px-8;
+    @apply mx-auto w-full max-w-4xl px-4 pb-12 sm:px-8;
   }
   .post-title {
     @apply text-3xl sm:text-4xl font-bold text-skin-base/90 leading-tight;

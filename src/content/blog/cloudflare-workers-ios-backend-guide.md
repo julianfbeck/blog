@@ -12,6 +12,14 @@ ogImage: "/media/cloudflare-worker-app-og.png"
 description: "Learn how to build a simple and scalable backend for AI-powered iOS apps using Cloudflare Workers and RevenueCat."
 ---
 
+##### Table of Contents
+
+1. [Cloudflare Workers Backend Architecture: Short-Running AI Tasks](#cloudflare-workers-backend-architecture-short-running-ai-tasks)
+   - [How to Limit Access to AI Features Based on User Subscriptions](#how-to-limit-access-to-ai-features-based-on-user-subscriptions)
+   - [What about Rate Limiting?](#what-about-rate-limiting)
+2. [Cloudflare Workers Backend Architecture: Long-Running AI Tasks](#cloudflare-workers-backend-architecture-long-running-ai-tasks)
+3. [Conclusion](#conclusion)
+
 The demand for AI-powered apps is rapidly increasing. Developers are creating applications such as "Plant Identifier," "Calorie Counter," and image-generation tools leveraging AI models from providers like OpenAI, Replicate, and others.
 
 A common approach might be to directly integrate AI services into the app by calling their APIs. However, this introduces a significant security risk: exposing the API key. Even if secure storage methods like Keychain are used, the API key can still be intercepted through network traffic monitoring tools like mitmproxy or Charles.
