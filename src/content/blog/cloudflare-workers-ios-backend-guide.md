@@ -12,14 +12,16 @@ ogImage: "/media/cloudflare-worker-app-og.png"
 description: "Learn how to build a simple and scalable backend for AI-powered iOS apps using Cloudflare Workers and RevenueCat."
 ---
 
-##### Table of Contents
+#### Table of Contents
 
-1. [Cloudflare Workers Backend Architecture: Short-Running AI Tasks](#cloudflare-workers-backend-architecture-short-running-ai-tasks)
-   - [How to Limit Access to AI Features Based on User Subscriptions](#how-to-limit-access-to-ai-features-based-on-user-subscriptions)
-   - [What about Rate Limiting?](#what-about-rate-limiting)
-2. [Cloudflare Workers Backend Architecture: Long-Running AI Tasks](#cloudflare-workers-backend-architecture-long-running-ai-tasks)
-3. [Conclusion](#conclusion)
+- [](#)
+  - [Cloudflare Workers Backend Architecture: Short-Running AI Tasks](#cloudflare-workers-backend-architecture-short-running-ai-tasks)
+    - [How to Limit Access to AI Features Based on User Subscriptions](#how-to-limit-access-to-ai-features-based-on-user-subscriptions)
+    - [What about Rate Limiting?](#what-about-rate-limiting)
+  - [Cloudflare Workers Backend Architecture: Long-Running AI Tasks](#cloudflare-workers-backend-architecture-long-running-ai-tasks)
+  - [Conclusion](#conclusion)
 
+#
 The demand for AI-powered apps is rapidly increasing. Developers are creating applications such as "Plant Identifier," "Calorie Counter," and image-generation tools leveraging AI models from providers like OpenAI, Replicate, and others.
 
 A common approach might be to directly integrate AI services into the app by calling their APIs. However, this introduces a significant security risk: exposing the API key. Even if secure storage methods like Keychain are used, the API key can still be intercepted through network traffic monitoring tools like mitmproxy or Charles.
@@ -37,7 +39,7 @@ The backend architecture consists of three main components:
 - **RevenueCat**: Manages user subscriptions and entitlements.
 - **OpenAI**: Provides AI capabilities for text generation, image recognition, and more.
 
-![CloudflareWorker](/media/cloudflare-workers-ios.svg){: style="max-width: 100%"}
+<img src="/media/workers.png" alt="CloudflareWorker" style="max-width: 100%">
 
 The Cloudflare Worker acts as a middleman between the app and the AI service. It checks the user's subscription status with RevenueCat and forwards the request to OpenAI if the user is subscribed. This architecture ensures that only paying users can access the AI features.
 
@@ -89,7 +91,7 @@ Alternatively, you could use Durable Objects, a new feature from Cloudflare Work
 
 For longer-running AI tasks, the synchronous approach might not be suitable due to timeout limits and connection issues. In such cases, an asynchronous approach is more appropriate. 
 
-![CloudflareWorker](/media/cloudflare-workers-webhook.svg){: style="max-width: 100%"}
+<img src="/media/workers-dual.png" alt="CloudflareWorker" style="max-width: 100%">
 
 Instead of waiting for the AI to complete, your app receives a request ID immediately. The app then periodically checks for results while the AI service processes the request independently. When done, the AI service notifies your worker through a webhook. The app can fetch the result from the worker by polling the worker with the request ID (as shown in the diagram above). For even more long-running tasks, the correct approach would be to use notifications to inform the app that the task is done.
 
