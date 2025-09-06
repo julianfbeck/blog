@@ -28,8 +28,7 @@ Eyevo is my new iOS app for Pokémon TCG collectors. It scans cards instantly us
 
 ## Download and Learn More
 
-- App Store: https://apps.apple.com/app/id6748607064
-- Website: https://eyevo.app/
+- App Store: https://apps.apple.com/app/id6748607064?pt=120183609&ct=blog-eyevo&mt=8
+- Website: https://eyevo.app/?utm_source=blog.julianbeck.com&utm_medium=referral&utm_campaign=post
 
 If you collect Pokémon cards or want to catalog your binder quickly, give Eyevo a try and let me know what you think.
-
