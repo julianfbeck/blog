@@ -12,7 +12,7 @@ tags:
   - Pokémon TCG
 ogImage: "/media/eyevo-marketing.png"
 description: Scan Pokémon trading cards instantly with Eyevo. On-device recognition, collection tracking, and fast performance for TCG collectors.
-canonicalURL: "https://eyevo.app/"
+canonicalURL: "https://eyevotcg.com/"
 ---
 
 Eyevo is my new iOS app for Pokémon TCG collectors. It scans cards instantly using on-device recognition and helps you keep your collection organized.
@@ -29,6 +29,6 @@ Eyevo is my new iOS app for Pokémon TCG collectors. It scans cards instantly us
 ## Download and Learn More
 
 - [Download on the App Store](https://apps.apple.com/app/id6748607064?pt=120183609&ct=blog-eyevo&mt=8)
-- [Visit eyevo.app](https://eyevo.app/?utm_source=blog.julianbeck.com&utm_medium=referral&utm_campaign=post)
+- [Visit eyevotcg.com](https://eyevotcg.com/?utm_source=blog.julianbeck.com&utm_medium=referral&utm_campaign=post)
 
 If you collect Pokémon cards or want to catalog your binder quickly, give Eyevo a try and let me know what you think.
