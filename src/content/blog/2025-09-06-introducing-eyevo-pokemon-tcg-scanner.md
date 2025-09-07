@@ -3,7 +3,7 @@ author: Julian Beck
 pubDatetime: 2025-09-06T10:00:00Z
 title: Introducing Eyevo - Pokémon TCG Card Scanner for iPhone
 postSlug: introducing-eyevo-pokemon-tcg-scanner
-featured: false
+featured: true
 draft: false
 tags:
   - iOS
