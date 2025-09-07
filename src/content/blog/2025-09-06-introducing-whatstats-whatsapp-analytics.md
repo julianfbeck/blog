@@ -27,7 +27,7 @@ WhatStats lets you explore your WhatsApp chats with beautiful, privacy‑friendl
 
 ## Get the App
 
-- App Store: https://apps.apple.com/app/apple-store/id1481007233?pt=120183609&ct=blog-whatstats&mt=8
-- Website: https://whatstatistics.com/?utm_source=blog.julianbeck.com&utm_medium=referral&utm_campaign=post
+- [Download on the App Store](https://apps.apple.com/app/apple-store/id1481007233?pt=120183609&ct=blog-whatstats&mt=8)
+- [Visit whatstatistics.com](https://whatstatistics.com/?utm_source=blog.julianbeck.com&utm_medium=referral&utm_campaign=post)
 
 If you try it out, I’d love feedback and ideas for new insights to add.
