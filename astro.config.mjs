@@ -8,6 +8,8 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.julianbeck.com/", // replace this with your deployed domain
+  // Extra project sites for reference (non-canonical):
+  // - https://coffeebeantracker.com
   integrations: [
     tailwind({
       config: {
