@@ -1,0 +1,27 @@
+# Redirect all blog posts to new julianbeck.com/blog/
+/posts/2021-01-04-ko-local-go-development-with-minikube https://julianbeck.com/blog/ko-local-go-development-with-minikube 301
+/posts/2021-01-05-set-up-basic-auth https://julianbeck.com/blog/set-up-basic-auth-traefik 301
+/posts/2021-01-05-use-uptimekuma-on-kubernetes https://julianbeck.com/blog/deploy-uptime-kuma-kubernetes 301
+/posts/introducing-eyevo-pokemon-tcg-scanner https://julianbeck.com/blog/introducing-eyevo-pokemon-tcg-scanner 301
+/posts/whatstats-whatsapp-chat-analytics-iphone https://julianbeck.com/blog/whatstats-whatsapp-analytics 301
+/posts/introducing-iemoji-ai-emoji-generator https://julianbeck.com/blog/introducing-iemoji-ai-emoji-generator 301
+/posts/add-to-siri-button-swiftui https://julianbeck.com/blog/add-to-siri-button-swiftui 301
+/posts/stripe-client-side-donation-button-with-react https://julianbeck.com/blog/stripe-client-side-donation-button-react 301
+/posts/app-money-track-your-app-store-sales-using-widgets https://julianbeck.com/blog/app-earnings-track-appstore-sales 301
+/posts/build-multiple-docker-images-using-github-action-and-matrix-builds https://julianbeck.com/blog/github-actions-build-multiple-docker-images 301
+/posts/cloudflare-workers-ios-backend-guide https://julianbeck.com/blog/cloudflare-workers-ios-backend 301
+/posts/experience-building-a-community-bingo-using-t3-stack https://julianbeck.com/blog/t3-stack-community-bingo 301
+/posts/kubernetes-dashboard-in-notion https://julianbeck.com/blog/kubernetes-dashboard-notion 301
+
+# Posts not on new site - redirect to main blog listing
+/posts/how-i-switched-my-website-from-next-auth-to-better-auth https://julianbeck.com/blog 301
+/posts/astro-cloudflare-pages-durable-objects-guide https://julianbeck.com/blog 301
+
+# Redirect main pages
+/posts https://julianbeck.com/blog 301
+/posts/* https://julianbeck.com/blog 301
+/ https://julianbeck.com/blog 301
+/tags https://julianbeck.com/blog 301
+/tags/* https://julianbeck.com/blog 301
+/about https://julianbeck.com 301
+/search https://julianbeck.com/blog 301
