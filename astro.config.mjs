@@ -45,10 +45,8 @@ export default defineConfig({
       "https://julianbeck.com/blog",
     // Redirect main pages
     "/posts": "https://julianbeck.com/blog",
-    "/posts/[...page]": "https://julianbeck.com/blog",
     "/": "https://julianbeck.com/blog",
     "/tags": "https://julianbeck.com/blog",
-    "/tags/[tag]": "https://julianbeck.com/blog",
     "/about": "https://julianbeck.com",
     "/search": "https://julianbeck.com/blog",
   },
